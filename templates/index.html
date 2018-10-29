@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content_table %}
+    <div class="table-responsive">
+        <table class="table text-center">
+            <thead>
+            <tr>
+                <th>出发时间</th>
+                <th>到达时间</th>
+                <th>总耗时</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in total %}
+                <td>{{ item }}</td>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="table-responsive">
+        <table class="table text-center">
+            <thead>
+            <tr>
+                <th>车次</th>
+                <th>上车时间</th>
+                <th>起始站</th>
+                <th>--></th>
+                <th>下车站</th>
+                <th>下车时间</th>
+                <th>经过站点</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in rows %}
+                <tr>
+                    {% for item in row %}
+                        <td>{{ item }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
