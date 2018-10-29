@@ -22,6 +22,9 @@ class Edge(object):
     def getArrive(self):
         return self._vertex2
 
+    def getNumber(self):
+        pass
+
     def getAnotherVertex(self, other: Vertex):
         if other == self._vertex2:
             return self._vertex1

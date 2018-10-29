@@ -13,7 +13,7 @@ class Train(Edge):
         self._arriveTime = arrive_time
         self._waitingTime = waiting_time
 
-    def getTrainNumber(self):
+    def getNumber(self):
         return self._trainNumber
 
     def getTrainType(self):
@@ -40,7 +40,7 @@ class Train(Edge):
         if type(self) != type(other): return False
         if self.getStart() == other.getStart() and self.getArrive() == other.getArrive():
             if self.getStartTime() == other.getStartTime() and self.getArriveTime() == other.getArriveTime():
-                if self.getTrainNumber() == other.getTrainNumber() and self.getTrainType() == other.getTrainType():
+                if self.getNumber() == other.getNumber() and self.getTrainType() == other.getTrainType():
                     return self._weight == other._weight
         return False
 

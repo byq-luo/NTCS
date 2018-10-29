@@ -13,7 +13,7 @@ class Airplane(Edge):
         self._startTime = start_time
         self._arriveTime = arrive_time
 
-    def getFlightNumber(self):
+    def getNumber(self):
         return self._flightNumber
 
     def getCompany(self):

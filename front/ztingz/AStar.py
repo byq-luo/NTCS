@@ -1,12 +1,11 @@
 import math
 import time
 
-from front.ztingz.Configure import get_from_ll_dict, ztz_logger, tm
+from front.ztingz.Configure import get_from_ll_dict, ztz_logger, TM, ENLIGHTENING_VALUE
 from front.ztingz.Time import Time
 from front.ztingz.TrafficMap import TrafficMap
 from front.ztingz.Vertex import Vertex
 from numba import autojit
-from astar import AStar
 
 
 class AStar(object):
@@ -32,7 +31,6 @@ class AStar(object):
 
     def dist_between(self, start: Vertex, end: Vertex):
         if start == end:
-            # print('start == end')
             return None, 0
         if start and end and end in start.adjacentVerticesIter():
             way, weight = start.bestByTo(end, self._nowTime)
@@ -55,8 +53,7 @@ class AStar(object):
         end_ll = get_from_ll_dict(self._end.getName())
         if v_ll and end_ll:
             result = math.sqrt(math.pow(v_ll[0] - end_ll[0], 2) + math.pow(v_ll[1] - end_ll[1], 2))
-            return result * 100
-        # print('inf')
+            return result * ENLIGHTENING_VALUE
         return float('inf')
 
     def addInOpen(self, father, vertex: Vertex):
@@ -79,21 +76,17 @@ class AStar(object):
 
     def run(self):
         c = 0
-        begin = time.time()
-        while len(self._open) != 0:
+        while self._open:
             c += 1
             current_name = min(self._fScore, key=self._fScore.get)
             current = self._map.getVertex(current_name)
             if current == self._end:
-                end = time.time()
                 print('总循环:', c, '次')
-                # print('Astar run function time:', (end - begin) / c)
                 return self.reconstructPath(current)
             self.outFromOpen(current)
             self._close.append(current)
             self._nowTime = self._arriveTime[current_name]
             for neighbor in current.adjacentVerticesIter():
-                # c += 1
                 if neighbor in self._close:
                     continue
                 if neighbor not in self._open:
@@ -126,10 +119,7 @@ class AStar(object):
         return self._fScore
 
     def getResult(self):
-        begin = time.time()
         result = self.run()
-        end_astar = time.time()
-        print('Astar run time:', end_astar - begin)
         total = []
         ztz_logger.info('=' * 36)
         ztz_logger.info(
@@ -147,118 +137,60 @@ class AStar(object):
                 if result[i][1].getArriveTime().getTime().day > result[i][1].getStartTime().getTime().day:
                     ztz_logger.info('(次日)')
                     total[-1] += '（次日）'
-                    break
+                    total_time += 86400
                 if result[i][1].getArriveTime().getTime().time() > result[i + 1][1].getStartTime().getTime().time():
                     ztz_logger.info('(次日)')
                     total[-1] += '（次日）'
                     total_time += 86400
-                    break
             except Exception:
                 continue
+        if total_time < 0:
+            total_time += 86400
         ztz_logger.info('Use time:' + str(float('%.2f' % (total_time / 3600))) + ' h')
         total.append(str(float('%.2f' % (total_time / 3600))) + 'h')
 
-        # 解析路径信息给用户
-
-        info = []
+        plan = []
         index = 0
-        # message = ''
         i = 0
         while i < len(result):
             count = 1
             try:
-                train_num = result[i][1].getTrainNumber()
-                info.append([])
-                info[index].append(train_num)
-                info[index].append(str(result[i][1].getStartTime()))
-                info[index].append(str(result[i][1].getStart()))
-                info[index].append('-->')
+                number = result[i][1].getNumber()
+                plan.append([])
+                plan[index].append(number)
+                plan[index].append(str(result[i][1].getStartTime()))
+                plan[index].append(str(result[i][1].getStart()))
+                plan[index].append('-->')
 
-                # message += '【' + train_num + '】 ' + str(result[i][1].getStartTime()) + ' ' + str(
-                #     result[i][1].getStart()) + ' ' + '->'
-                while result[i + 1][1].getTrainNumber() == train_num:
+                while result[i + 1][1].getNumber() == number:
                     i += 1
                     count += 1
-                info[index].append(str(result[i][1].getArrive()))
-                info[index].append(str(result[i][1].getArriveTime()))
-                info[index].append(str(count) + '站')
+                plan[index].append(str(result[i][1].getArrive()))
+                plan[index].append(str(result[i][1].getArriveTime()))
+                plan[index].append(str(count) + '站')
                 index += 1
-                # message += str(result[i][1].getArriveTime()) + ' ' + str(result[i][1].getArrive()) + str(
-                #     count) + ' ' + '站\n'
                 i += 1
             except Exception:
                 if i is len(result) - 2:
-                    info[index].append(str(result[-2][1].getArrive()))
-                    info[index].append(str(result[-2][1].getArriveTime()))
-                    info[index].append(str(count) + '站')
+                    plan[index].append(str(result[-2][1].getArrive()))
+                    plan[index].append(str(result[-2][1].getArriveTime()))
+                    plan[index].append(str(count) + '站')
                     index += 1
-                    # message += str(result[-2][1].getArriveTime()) + ' ' + str(result[-2][1].getArrive()) + str(
-                    #     count) + ' ' + '站\n'
                     break
-                info[index].append(str(count) + '站')
+                plan[index].append(str(count) + '站')
                 index += 1
-                # message += ' ' + str(count) + '站\n'
-                i += 1
-        # for i in message.splitlines():
-        #     ztz_logger.info(i)
-        for item in info:
+        for item in plan:
             ztz_logger.info(str(item))
-        end = time.time()
-        print('run getResult time:', end - begin)
-        return info, total
+        return plan, total, total_time
 
 
 if __name__ == "__main__":
-    _from = '南昌'
-    _to = '北京'
-    _departureTime = '20:39'
+    _from = '首都国际机场'
+    _to = '两江国际机场'
+    _departureTime = '0:0'
 
-    a = AStar(tm, _from, _to, _departureTime)
+    a = AStar(TM, _from, _to, _departureTime)
     begin = time.time()
     print(a.getResult())
     end = time.time()
-    print('run Main time:', end - begin)
-    #
-    # ztz_logger.info('=' * 31)
-    # ztz_logger.info('=== ' + _from + ' -> ' + _to + ' begin:' + _departureTime + ' ===')
-    # ztz_logger.info('=' * 31)
-    #
-    # ztz_logger.info(str(result[-1][1].getStartTime()) + ' - ' + str(result[1][1].getArriveTime()))
-    # total_time = result[1][1].getArriveTime() - result[-1][1].getStartTime()
-    # for index in range(len(result)):
-    #     try:
-    #         if result[index][1].getArriveTime() < result[index + 1][1].getArriveTime():
-    #             total_time += 86400
-    #             print('+1day')
-    #     except Exception:
-    #         pass
-    #
-    # ztz_logger.info('Use time:' + str(float('%.2f' % (total_time / 3600))) + ' h')
-    #
-    # result.reverse()
-    # index = 0
-    # message = ''
-    # while index < len(result):
-    #     count = 1
-    #     try:
-    #         train_num = result[index][1].getTrainNumber()
-    #         message += '【' + train_num + '】 ' + str(result[index][1].getStartTime()) + ' ' + str(
-    #             result[index][1].getStart()) + ' ' + '->'
-    #         while result[index + 1][1].getTrainNumber() == train_num:
-    #             index += 1
-    #             count += 1
-    #         message += str(result[index][1].getArriveTime()) + ' ' + str(result[index][1].getArrive()) + str(
-    #             count) + ' ' + '站\n'
-    #         index += 1
-    #     except Exception:
-    #         if index == len(result) - 2:
-    #             message += str(result[-2][1].getArriveTime()) + ' ' + str(result[-2][1].getArrive()) + str(
-    #                 count) + ' ' + '站\n'
-    #             break
-    #         message += ' ' + str(count) + '站\n'
-    #         index += 1
-    #
-    # for i in message.splitlines():
-    #     ztz_logger.info(i)
-
-    # print('run use time:', end - begin)
+    # print('run Main time:', end - begin)

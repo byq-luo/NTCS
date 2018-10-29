@@ -83,7 +83,7 @@ class TrafficMap(Digraph):
                           v1_name, v1_abbreviation, v2_name, v2_abbreviation,
                           start_time, arrive_time, **kwargs)
 
-    def getCity(self, city_name):
+    def getCityStation(self, city_name):
         city_list = []
         for vertex in self.vertices():
             if type(vertex) is Airport:
@@ -97,6 +97,26 @@ class TrafficMap(Digraph):
                 elif v_name in city_name:
                     city_list.append(vertex.getName())
         return city_list
+
+    def getTrainStation(self, city_name):
+        train_station_list = []
+        for vertex in self.vertices():
+            if type(vertex) is TrainStation:
+                v_name = vertex.getName()
+                if len(v_name) > 2 and v_name[-1] in ['东', '西', '南', '北']:
+                    if v_name[:-1] in city_name:
+                        train_station_list.append(vertex.getName())
+                elif v_name in city_name:
+                    train_station_list.append(vertex.getName())
+        return train_station_list
+
+    def getAirport(self, city_name):
+        airport_list = []
+        for vertex in self.vertices():
+            if type(vertex) is Airport:
+                if vertex.getCityName() == city_name:
+                    airport_list.append(vertex.getName())
+        return airport_list
 
     def __str__(self):
         super(TrafficMap, self).__str__()

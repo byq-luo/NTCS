@@ -10,6 +10,9 @@ from numba import autojit
 
 current_path = os.path.dirname(__file__)
 
+ENLIGHTENING_VALUE = 400
+SEARCH_WEIGHT = 'time'
+
 # 创建一个logger
 ztz_logger = logging.getLogger('ztz')
 ztz_logger.setLevel(logging.DEBUG)
@@ -25,7 +28,6 @@ ztz_logger.addHandler(fh)
 
 def readLL(filename):
     vll_dict = {}
-    # with open("../CSV/" + filename, "r", encoding="utf-8") as f:
     with open(current_path.replace('ztingz', '') + "/CSV/" + filename, "r", encoding="utf-8") as f:
         reader = csv.reader(f)
         fieldnames = next(reader)  # 获取数据的第一列，作为后续要转为字典的键名 生成器，next方法获取
@@ -35,12 +37,12 @@ def readLL(filename):
     return vll_dict
 
 
-ll_dict = readLL('LL.csv')
+LL_DICT = readLL('LL.csv')
 
 
 def get_from_ll_dict(v_name: str):
     try:
-        return ll_dict[v_name]
+        return LL_DICT[v_name]
     except KeyError:
         return None
 
@@ -48,8 +50,6 @@ def get_from_ll_dict(v_name: str):
 def readCSV(filename, need_fields: str):
     need_fields = need_fields.split(' ')
     cols = []
-    # with open("../CSV/" + filename, "r", encoding="utf-8-sig") as f:
-    # with open("CSV/" + filename, "r", encoding="utf-8-sig") as f:
     with open(current_path.replace('ztingz', '') + "/CSV/" + filename, "r", encoding="utf-8-sig") as f:
         reader = csv.reader(f)
         all_fields = next(reader)  # 获取数据的第一列，作为后续要转为字典的键名 生成器，next方法获取
@@ -62,13 +62,13 @@ def readCSV(filename, need_fields: str):
     return cols
 
 
-airline_table = readCSV("Airline.csv", "startCity lastCity Company "
+AIRLINE_TABLE = readCSV("Airline.csv", "startCity lastCity Company "
                                        "AirlineCode StartDrome ArriveDrome "
                                        "StartTime ArriveTime Mode")
-railway_line_table = readCSV("RailwayLine.csv", "ID Type Station A_Time D_Time")
-tm = TrafficMap()
-tm.addTrains(railway_line_table)
-tm.addPlanes(airline_table)
+RAILWAY_TABLE = readCSV("RailwayLine.csv", "ID Type Station A_Time D_Time")
+TM = TrafficMap()
+TM.addTrains(RAILWAY_TABLE)
+TM.addPlanes(AIRLINE_TABLE)
 
 url = 'http://api.map.baidu.com/geocoder/v2/'
 output = 'json'
@@ -98,64 +98,41 @@ def getLLFromAPI(address):
     return lng, lat, level
 
 
-# def writeLLToFile():
-#     with open('../CSV/RailwayLine.csv', encoding="utf-8-sig") as csvfile:
-#         rows = csv.reader(csvfile)
-#         with open('../CSV/LL1.csv', 'w', newline='') as f:
-#             writer = csv.writer(f)
-#             i = 0
-#             for row in rows:
-#                 if i < 100:
-#                     i += 1
-#                     continue
-#                 address = row[3] + '站'
-#                 print(address)
-#                 if address == 'Station站':
-#                     row.append('lng')
-#                     row.append('lat')
-#                     row.append('level')
-#                 else:
-#                     ll = getLLFromAPI(address)
-#                     row.append(ll[0])
-#                     row.append(ll[1])
-#                     row.append(ll[2])
-#                 writer.writerow(row)
-#                 i += 1
-#                 if i > 100:
-#                     break
-
-
-# def updateVLL(traffic_map):
-#     addresses = []
-#     for v in traffic_map.vertices():
-#         from front.ztingz.TrainStation import TrainStation
-#         from front.ztingz.Airport import Airport
-#         if type(v) == TrainStation:
-#             if len(v.getName()) >= 3 or v.getName()[-1] in ['东', '西', '南', '北']:
-#                 addresses.append(v.getName() + '站')
-#             else:
-#                 addresses.append(v.getName() + '火车站')
-#         elif type(v) == Airport:
-#             addresses.append(v.getName())
-#     with open('../front/CSV/LL1.csv', 'w', newline='') as f:
-#         writer = csv.writer(f)
-#         i = 0
-#         header = ['vertex', 'lng', 'lat', 'level']
-#         writer.writerow(header)
-#         for address in addresses:
-#             print(i, address)
-#             row = []
-#             ll = getLLFromAPI(address)
-#             address.replace('火车站', '')
-#             row.append(address.replace('站', ''))
-#             row.append(ll[0])
-#             row.append(ll[1])
-#             row.append(ll[2])
-#             print(row)
-#             writer.writerow(row)
-#             i += 1
+def updateVLL(traffic_map, filename):
+    addresses = []
+    for v in traffic_map.vertices():
+        from front.ztingz.TrainStation import TrainStation
+        from front.ztingz.Airport import Airport
+        if type(v) == TrainStation:
+            if len(v.getName()) >= 3 or v.getName()[-1] in ['东', '西', '南', '北']:
+                addresses.append(v.getName() + '站')
+            else:
+                addresses.append(v.getName() + '火车站')
+        elif type(v) == Airport:
+            addresses.append(v.getName())
+    with open(current_path.replace('ztingz', '') + '/CSV/' + filename, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        i = 0
+        header = ['vertex', 'lng', 'lat', 'level']
+        writer.writerow(header)
+        for address in addresses:
+            print(i, address)
+            row = []
+            ll = getLLFromAPI(address)
+            row.append(address.replace('火车站', '').replace('站', ''))
+            row.append(ll[0])
+            row.append(ll[1])
+            row.append(ll[2])
+            print(row)
+            writer.writerow(row)
+            i += 1
+            if i > 10:
+                break
 
 
 if __name__ == "__main__":
     print(get_from_ll_dict('北京'))
-    print(tm.getCity('北京'))
+    print(TM.getCityStation('福州'))
+    updateVLL(TM, 'LL-1.csv')
+    test = readLL('LL-1.csv')
+    print(test)

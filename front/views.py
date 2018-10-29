@@ -6,7 +6,7 @@ from django import forms
 from django.views.decorators.csrf import csrf_exempt
 
 from front.ztingz.AStar import AStar
-from front.ztingz.Configure import tm
+from front.ztingz.Configure import TM
 
 
 class UserForm(forms.Form):
@@ -21,9 +21,9 @@ def getAstar(start, end, departure_time):
     _from = start
     _to = end
     _departureTime = departure_time
-    a = AStar(tm, _from, _to, _departureTime)
-    result = a.getResult()
-    return result
+    a = AStar(TM, _from, _to, _departureTime)
+    plan, total, total_time = a.getResult()
+    return plan, total, total_time
 
 
 def index(request, info=None):
@@ -38,13 +38,46 @@ def index(request, info=None):
     d_time = date_time.split(' ')[1][:-3]
     sel_strategy = info[4]
     try:
-        rows, total = getAstar(starting, destination, d_time)
+        starts = []
+        ends = []
+        if vehicle == 'auto':
+            starts = TM.getCityStation(starting)
+            ends = TM.getCityStation(destination)
+        elif vehicle == 'train':
+            starts = TM.getTrainStation(starting)
+            ends = TM.getTrainStation(destination)
+        elif vehicle == 'plane':
+            starts = TM.getAirport(starting)
+            ends = TM.getAirport(destination)
+        plans = []
+        totals = []
+        total_times = []
+        print(starts, ends)
+        for start in starts:
+            for end in ends:
+                if '机场' in start and '机场' not in end:
+                    continue
+                if '机场' in end and '机场' not in start:
+                    continue
+                plan, total, total_time = getAstar(start, end, d_time)
+                # print(plan, '\n', total, total_time)
+                plans.append(plan)
+                totals.append(total)
+                total_times.append(total_time)
+
+        result_index = total_times.index(min(total_times))
+        rows = plans[result_index]
+        total = totals[result_index]
+
+        # rows, total = getAstar(starting, destination, d_time)
+
         return render(request, 'index.html',
                       context={"rows": rows, 'total': total,
                                'starting': starting,
                                'destination': destination,
                                'date_time': date_time})
     except Exception as e:
+        # 可以优化一下显示页面
         return HttpResponse(str(info) + '\n' + str(e))
 
 
@@ -79,5 +112,5 @@ def updatePage(request):
 
 
 if __name__ == "__main__":
-    # print(type(getAstar('北京','上海','8:0')))
+    print(getAstar('北京', '成都', '8:0'))
     pass
