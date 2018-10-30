@@ -24,11 +24,13 @@
                     <label class="custom-control-label" for="sel_auto">自动</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" class="custom-control-input" id="sel_train" name="vehicle" value="train">
+                    <input type="radio" class="custom-control-input" id="sel_train" {{ train_checked }} name="vehicle"
+                           value="train">
                     <label class="custom-control-label" for="sel_train">铁路</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" class="custom-control-input" id="sel_plane" name="vehicle" value="plane">
+                    <input type="radio" class="custom-control-input" id="sel_plane" {{ plane_checked }} name="vehicle"
+                           value="plane">
                     <label class="custom-control-label" for="sel_plane">飞机</label>
                 </div>
                 <span class="text-danger">{{ errors.vehicle }}</span>
@@ -56,8 +58,8 @@
                 <div class="input-group date form_datetime" data-date="" data-date-format="yyyy-mm-dd hh:ii:ss"
                      data-link-field="dtp_input1" data-link-format="yyyy-mm-dd hh:ii:ss">
                     <span class="input-group-prepend input-group-text" id="date">出发日期</span>
-                    <input class="form-control" type="text" readonly placeholder="2018-10-06 21:00:00" name="datetime"
-                           value={{ date_time }}>
+                    <input class="form-control" type="text" readonly placeholder="2018-10-30 21:00:00" name="datetime"
+                           value='{{ date_time }}'>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
@@ -101,7 +103,7 @@
         startView: 2,
         forceParse: 0,
         showMeridian: 1,
-        startDate: "2018-10-06",
+        startDate: '{{ start_date }}',
     });
 </script>
 </body>

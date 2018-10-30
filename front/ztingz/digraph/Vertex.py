@@ -1,12 +1,19 @@
+from abc import abstractmethod
+
+
 class Vertex(object):
     """点类
 
     这个类描述图中的节点
-    每个节点有名字_name, 邻接边表_mark, 标记_edgeLists共3个私有成员属性
+    每条边有2个受保护成员属性:
+        名字_name
+        邻接边表_edgeList
+    1个公有成员属性:
+        其他信息字典otherInfoDict
 
     """
+    __slots__ = ('_name', '_edgeList', 'otherInfoDict')
 
-    # 节点的带参构造方法
     def __init__(self, name: str, **kwargs):
         self._name = name
         self._edgeList = list()
@@ -20,12 +27,6 @@ class Vertex(object):
         self._name = name
 
     # 节点邻接边表属性_edgeLists的方法
-    def edgeList(self):
-        return self._edgeList
-
-    def sizeofEdges(self):
-        return len(self._edgeList)
-
     def addEdge(self, edge):
         self._edgeList.append(edge)
 
@@ -35,34 +36,24 @@ class Vertex(object):
             return True
         return False
 
-    def adjacentEdgeIter(self):
+    def sizeofEdges(self):
+        return len(self._edgeList)
+
+    def getEdgeList(self):
+        return self._edgeList
+
+    def edgesIter(self):
         return iter(self._edgeList)
 
+    # 获得此节点的可达节点的迭代器
     def adjacentVerticesIter(self):
         vertices = list()
-        for edge in self.adjacentEdgeIter():
-            if edge.getAnotherVertex(self) in vertices:
-                continue
-            vertices.append(edge.getAnotherVertex(self))
+        for edge in self.edgesIter():
+            if edge.getAnotherVertex(self) not in vertices:
+                vertices.append(edge.getAnotherVertex(self))
         return iter(vertices)
 
-    def adjacentVertices(self):
-        vertices = list()
-        for edge in self.adjacentEdgeIter():
-            if edge.getAnotherVertex(self) in vertices:
-                continue
-            vertices.append(edge.getAnotherVertex(self))
-        return vertices
-
-    def byTo(self, v):
-        pass
-
-    def bestByTo(self, end, departure_time):
-        pass
-
-    # Vertex类重载object类的方法.
     def __str__(self):
-        # return str('[' + self._name + ']' + str(self.otherInfoDict))
         return str('[' + self._name + ']')
 
     def __eq__(self, other):
@@ -72,6 +63,5 @@ class Vertex(object):
 
 
 if __name__ == "__main__":
-    v1 = Vertex('北京西', f=1, s=3)
-    v2 = Vertex('北京')
+    v1 = Vertex('北京西')
     print(v1)

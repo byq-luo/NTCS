@@ -1,12 +1,12 @@
 import time
+from datetime import datetime
 
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django import forms
 from django.views.decorators.csrf import csrf_exempt
 
 from front.ztingz.AStar import AStar
-from front.ztingz.Configure import TM
+from front.ztingz.TrafficMap import TM
 
 
 class UserForm(forms.Form):
@@ -27,11 +27,16 @@ def getAstar(start, end, departure_time):
 
 
 def index(request, info=None):
+    now_datetime = datetime.now()
+    start_date = now_datetime.date()
     if info is None:
-        return render(request, 'index.html',
-                      context={"rows": [[]], 'starting': '福州', 'destination': '北京', 'date_time': "2018-10-06 21:00:00"})
+        return render(request, 'base.html',
+                      context={"rows": [[]], 'starting': '福州', 'destination': '北京',
+                               'date_time': str(now_datetime).split('.')[0], 'start_date': str(start_date)})
 
     vehicle = info[0]
+    train_checked = ''
+    plane_checked = ''
     starting = info[1]
     destination = info[2]
     date_time = info[3]
@@ -46,9 +51,11 @@ def index(request, info=None):
         elif vehicle == 'train':
             starts = TM.getTrainStation(starting)
             ends = TM.getTrainStation(destination)
+            train_checked = 'checked'
         elif vehicle == 'plane':
             starts = TM.getAirport(starting)
             ends = TM.getAirport(destination)
+            plane_checked = 'checked'
         plans = []
         totals = []
         total_times = []
@@ -60,7 +67,6 @@ def index(request, info=None):
                 if '机场' in end and '机场' not in start:
                     continue
                 plan, total, total_time = getAstar(start, end, d_time)
-                # print(plan, '\n', total, total_time)
                 plans.append(plan)
                 totals.append(total)
                 total_times.append(total_time)
@@ -69,16 +75,16 @@ def index(request, info=None):
         rows = plans[result_index]
         total = totals[result_index]
 
-        # rows, total = getAstar(starting, destination, d_time)
-
         return render(request, 'index.html',
-                      context={"rows": rows, 'total': total,
-                               'starting': starting,
-                               'destination': destination,
-                               'date_time': date_time})
+                      context={"rows": rows, 'total': total, 'train_checked': train_checked,
+                               'plane_checked': plane_checked, 'starting': starting, 'destination': destination,
+                               'date_time': date_time, 'start_date': str(start_date)})
     except Exception as e:
-        # 可以优化一下显示页面
-        return HttpResponse(str(info) + '\n' + str(e))
+        error_message = '错误'
+        return render(request, 'error.html',
+                      context={'error_message': e, 'train_checked': train_checked, 'plane_checked': plane_checked,
+                               'starting': starting, 'destination': destination, 'date_time': date_time,
+                               'start_date': str(start_date)})
 
 
 @csrf_exempt

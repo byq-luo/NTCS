@@ -1,9 +1,23 @@
-from front.ztingz.Edge import Edge
-from front.ztingz import Time
+from front.ztingz.digraph.Edge import Edge
 from front.ztingz import TrainStation
+from front.ztingz import Time
 
 
 class Train(Edge):
+    """列车类
+
+    这个类描述交通图中的列车
+    继承自Edge类
+    每趟列车有5个受保护成员属性:
+        航班号_flightNumber
+        航班公司_company
+        航班机型_mode
+        出发时间_startTime
+        到达时间_arriveTime
+
+    """
+    __slots__ = ('_trainNumber', '_trainType', '_startTime', '_arriveTime', '_waitingTime')
+
     def __init__(self, train_number: str, train_type: str, v1: TrainStation, v2: TrainStation,
                  start_time: Time, arrive_time: Time, waiting_time, **kwargs):
         super(Train, self).__init__(v1, v2, **kwargs)
@@ -13,6 +27,7 @@ class Train(Edge):
         self._arriveTime = arrive_time
         self._waitingTime = waiting_time
 
+    # 保护成员的公共调用方法
     def getNumber(self):
         return self._trainNumber
 
@@ -28,17 +43,17 @@ class Train(Edge):
     def getWaitingTime(self):
         return self._waitingTime
 
+    # 用于测试输出
     def __str__(self):
         delimiter = ' '
         seq = ('【' + self._trainType, self._trainNumber + '】',
                str(self.getStart()), '->', str(self.getArrive()),
-               self._startTime, '~', self._arriveTime, 'wait:', self.getWaitingTime(), str(self._weight))
+               self._startTime, '-', self._arriveTime, 'wait:', self.getWaitingTime(), str(self._weight))
         return delimiter.join(map(str, seq))
 
+    # 用于判断两趟列车是否相等
     def __eq__(self, other):
-        if self is other: return True
-        if type(self) != type(other): return False
-        if self.getStart() == other.getStart() and self.getArrive() == other.getArrive():
+        if super(Train, self).__eq__(other):
             if self.getStartTime() == other.getStartTime() and self.getArriveTime() == other.getArriveTime():
                 if self.getNumber() == other.getNumber() and self.getTrainType() == other.getTrainType():
                     return self._weight == other._weight
@@ -46,11 +61,4 @@ class Train(Edge):
 
 
 if __name__ == "__main__":
-    train1 = Train('K5656', '空调快速', TrainStation('北京'), TrainStation('上海'),
-                   Time(strTime='8:50'), Time(strTime='22:40'), Time(strTime='00:05'),
-                   time=Time(strTime='22:40') - Time(strTime='8:50', ))
-    train2 = Train('K5656', '空调快速', TrainStation('北京'), TrainStation('上海'),
-                   Time(strTime='8:50'), Time(strTime='22:40'), Time(strTime='00:05'),
-                   time=Time(strTime='22:40') - Time(strTime='8:50', ))
-    print(train1 == train2)
-    print(train1)
+    pass

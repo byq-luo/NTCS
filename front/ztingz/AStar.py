@@ -1,18 +1,17 @@
 import math
 import time
 
-from front.ztingz.Configure import get_from_ll_dict, ztz_logger, TM, ENLIGHTENING_VALUE
+from front.ztingz.Configure import get_from_ll_dict, ztz_logger, ENLIGHTENING_VALUE
 from front.ztingz.Time import Time
-from front.ztingz.TrafficMap import TrafficMap
-from front.ztingz.Vertex import Vertex
-from numba import autojit
+from front.ztingz.TrafficMap import TrafficMap, TM
+from front.ztingz.digraph.Vertex import Vertex
 
 
 class AStar(object):
     def __init__(self, g: TrafficMap, start_name: str, end_name: str, departure_time):
         self._map = g
-        self._start = g.getVertex(start_name)
-        self._end = g.getVertex(end_name)
+        self._start = g.findVertex(start_name)
+        self._end = g.findVertex(end_name)
         if self._start is None:
             raise Exception("不存在的点", start_name)
         if self._end is None:
@@ -43,8 +42,8 @@ class AStar(object):
 
     def calc_g(self, v_name):
         if v_name == self._start.getName():
-            return self.dist_between(self._start, self._map.getVertex(v_name))
-        return self.dist_between(self._cameFrom[v_name], self._map.getVertex(v_name))
+            return self.dist_between(self._start, self._map.findVertex(v_name))
+        return self.dist_between(self._cameFrom[v_name], self._map.findVertex(v_name))
 
     def calc_h(self, v_name):
         if v_name == self._end.getName():
@@ -79,7 +78,7 @@ class AStar(object):
         while self._open:
             c += 1
             current_name = min(self._fScore, key=self._fScore.get)
-            current = self._map.getVertex(current_name)
+            current = self._map.findVertex(current_name)
             if current == self._end:
                 print('总循环:', c, '次')
                 return self.reconstructPath(current)

@@ -1,15 +1,21 @@
-from front.ztingz.Vertex import Vertex
+from abc import abstractmethod
+
+from front.ztingz.Configure import SEARCH_WEIGHT
+from front.ztingz.digraph.Vertex import Vertex
 
 
 class Edge(object):
     """边类
 
     这个类描述图中的边
-    每条边有出发点_vertex1, 到达点_vertex2, 权值_weight共3个私有成员属性
+    每条边有3个受保护成员属性:
+        出发点_vertex1
+        到达点_vertex2
+        权值_weight
 
     """
+    __slots__ = ('_vertex1', '_vertex2', '_weight')
 
-    # 边的带参构造方法
     def __init__(self, v1: Vertex, v2: Vertex, **kwargs):
         self._vertex1 = v1
         self._vertex2 = v2
@@ -22,9 +28,6 @@ class Edge(object):
     def getArrive(self):
         return self._vertex2
 
-    def getNumber(self):
-        pass
-
     def getAnotherVertex(self, other: Vertex):
         if other == self._vertex2:
             return self._vertex1
@@ -36,9 +39,12 @@ class Edge(object):
         try:
             return self._weight[field]
         except KeyError:
-            return 0
+            return None
 
-    # Edge类重载object类的方法.
+    @abstractmethod
+    def getNumber(self):
+        pass
+
     def __str__(self):
         return str(self._vertex1) + ' -> ' + str(self._vertex2) + ':' + str(self._weight)
 
@@ -50,12 +56,12 @@ class Edge(object):
         return False
 
     def __lt__(self, other):
-        return self.getWeight('time') < other.getWeight('time')
+        return self.getWeight(SEARCH_WEIGHT) < other.getWeight(SEARCH_WEIGHT)
 
 
 if __name__ == "__main__":
     v1 = Vertex('北京西', f=1, s=3)
     v2 = Vertex('北京')
     e1 = Edge(v1, v2, time=12)
-    e2 = Edge(v2, v1, time=10)
-    print(e2._weight['time'])
+    e2 = Edge(v1, v2, time=10)
+    print(e1 ==e2)

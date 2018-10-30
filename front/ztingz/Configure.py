@@ -5,25 +5,11 @@ import time
 import os
 from urllib.error import URLError
 from urllib.request import urlopen, quote
-from front.ztingz.TrafficMap import TrafficMap
-from numba import autojit
 
 current_path = os.path.dirname(__file__)
 
 ENLIGHTENING_VALUE = 400
 SEARCH_WEIGHT = 'time'
-
-# 创建一个logger
-ztz_logger = logging.getLogger('ztz')
-ztz_logger.setLevel(logging.DEBUG)
-# 创建一个handler，用于写入日志文件
-fh = logging.FileHandler('test.log')
-fh.setLevel(logging.DEBUG)
-# 定义handler的输出格式
-formatter = logging.Formatter('%(asctime)s - %(message)s')
-fh.setFormatter(formatter)
-# 给logger添加handler
-ztz_logger.addHandler(fh)
 
 
 def readLL(filename):
@@ -47,7 +33,7 @@ def get_from_ll_dict(v_name: str):
         return None
 
 
-def readCSV(filename, need_fields: str):
+def readTable(filename, need_fields: str):
     need_fields = need_fields.split(' ')
     cols = []
     with open(current_path.replace('ztingz', '') + "/CSV/" + filename, "r", encoding="utf-8-sig") as f:
@@ -62,13 +48,10 @@ def readCSV(filename, need_fields: str):
     return cols
 
 
-AIRLINE_TABLE = readCSV("Airline.csv", "startCity lastCity Company "
-                                       "AirlineCode StartDrome ArriveDrome "
-                                       "StartTime ArriveTime Mode")
-RAILWAY_TABLE = readCSV("RailwayLine.csv", "ID Type Station A_Time D_Time")
-TM = TrafficMap()
-TM.addTrains(RAILWAY_TABLE)
-TM.addPlanes(AIRLINE_TABLE)
+AIRLINE_TABLE = readTable("Airline.csv", "startCity lastCity Company "
+                                         "AirlineCode StartDrome ArriveDrome "
+                                         "StartTime ArriveTime Mode")
+RAILWAY_TABLE = readTable("RailwayLine.csv", "ID Type Station A_Time D_Time")
 
 url = 'http://api.map.baidu.com/geocoder/v2/'
 output = 'json'
@@ -100,7 +83,7 @@ def getLLFromAPI(address):
 
 def updateVLL(traffic_map, filename):
     addresses = []
-    for v in traffic_map.vertices():
+    for v in traffic_map.verticesIter():
         from front.ztingz.TrainStation import TrainStation
         from front.ztingz.Airport import Airport
         if type(v) == TrainStation:
@@ -130,9 +113,18 @@ def updateVLL(traffic_map, filename):
                 break
 
 
+# 创建一个logger
+ztz_logger = logging.getLogger('ztz')
+ztz_logger.setLevel(logging.DEBUG)
+# 创建一个handler，用于写入日志文件
+fh = logging.FileHandler('test.log', encoding='utf-8')
+fh.setLevel(logging.DEBUG)
+# 定义handler的输出格式
+formatter = logging.Formatter('%(asctime)s - %(message)s')
+fh.setFormatter(formatter)
+# 给logger添加handler
+ztz_logger.addHandler(fh)
+
 if __name__ == "__main__":
-    print(get_from_ll_dict('北京'))
-    print(TM.getCityStation('福州'))
-    updateVLL(TM, 'LL-1.csv')
     test = readLL('LL-1.csv')
     print(test)

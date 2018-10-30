@@ -1,24 +1,33 @@
-from front.ztingz.Digraph import Digraph
+from front.ztingz.Configure import RAILWAY_TABLE, AIRLINE_TABLE
+from front.ztingz.Time import Time
 from front.ztingz.Airplane import Airplane
 from front.ztingz.Airport import Airport
-from front.ztingz.Time import Time
 from front.ztingz.Train import Train
 from front.ztingz.TrainStation import TrainStation
-from numba import autojit
+from front.ztingz.digraph.Digraph import Digraph
 
 
 class TrafficMap(Digraph):
+    """交通图类
+
+    这个类描述交通图
+    继承自Digraph类
+
+    """
+    __slots__ = ()
+
     def __init__(self, sourceCollection=None):
         super(TrafficMap, self).__init__(sourceCollection)
 
+    # 添加一辆列车的方法
     def addTrain(self, train_number: str, train_type: str, v1_name: str, v2_name: str,
                  start_time: str, arrive_time: str, waiting_time, **kwargs):
-        if not self.containsVertex(v1_name):
+        if not self.findVertex(v1_name):
             self.addVertex(TrainStation(v1_name))
-        if not self.containsVertex(v2_name):
+        if not self.findVertex(v2_name):
             self.addVertex(TrainStation(v2_name))
-        v1 = self.getVertex(v1_name)
-        v2 = self.getVertex(v2_name)
+        v1 = self.findVertex(v1_name)
+        v2 = self.findVertex(v2_name)
         startTime = Time(strTime=start_time)
         arriveTime = Time(strTime=arrive_time)
         if arriveTime < startTime:
@@ -26,6 +35,24 @@ class TrafficMap(Digraph):
         kwargs['time'] = arriveTime - startTime
         train = Train(train_number, train_type, v1, v2, startTime, arriveTime, waiting_time, **kwargs)
         return self.addEdge(train)
+
+    # 添加一趟航班的方法
+    def addPlane(self, flight_number: str, company: str, mode: str,
+                 v1_name: str, v1_abbreviation: str, v2_name: str, v2_abbreviation: str,
+                 start_time: str, arrive_time: str, **kwargs):
+        if not self.findVertex(v1_name):
+            self.addVertex(Airport(v1_name, v1_abbreviation))
+        if not self.findVertex(v2_name):
+            self.addVertex(Airport(v2_name, v2_abbreviation))
+        v1 = self.findVertex(v1_name)
+        v2 = self.findVertex(v2_name)
+        startTime = Time(strTime=start_time)
+        arriveTime = Time(strTime=arrive_time)
+        if arriveTime < startTime:
+            arriveTime = arriveTime.nextDay()
+        kwargs['time'] = arriveTime - startTime
+        plane = Airplane(flight_number, company, mode, v1, v2, startTime, arriveTime, **kwargs)
+        return self.addEdge(plane)
 
     def addTrains(self, timetable: list, **kwargs):
         for row in timetable:
@@ -49,23 +76,6 @@ class TrafficMap(Digraph):
             self.addTrain(train_number, train_type, v1_name, v2_name,
                           start_time, arrive_time, waiting_time, **kwargs)
 
-    def addPlane(self, flight_number: str, company: str, mode: str,
-                 v1_name: str, v1_abbreviation: str, v2_name: str, v2_abbreviation: str,
-                 start_time: str, arrive_time: str, **kwargs):
-        if not self.containsVertex(v1_name):
-            self.addVertex(Airport(v1_name, v1_abbreviation))
-        if not self.containsVertex(v2_name):
-            self.addVertex(Airport(v2_name, v2_abbreviation))
-        v1 = self.getVertex(v1_name)
-        v2 = self.getVertex(v2_name)
-        startTime = Time(strTime=start_time)
-        arriveTime = Time(strTime=arrive_time)
-        if arriveTime < startTime:
-            arriveTime = arriveTime.nextDay()
-        kwargs['time'] = arriveTime - startTime
-        plane = Airplane(flight_number, company, mode, v1, v2, startTime, arriveTime, **kwargs)
-        return self.addEdge(plane)
-
     def addPlanes(self, timetable: list, **kwargs):
         for row in timetable:
             if row['Company'] == '没有航班':
@@ -85,7 +95,7 @@ class TrafficMap(Digraph):
 
     def getCityStation(self, city_name):
         city_list = []
-        for vertex in self.vertices():
+        for vertex in self.verticesIter():
             if type(vertex) is Airport:
                 if vertex.getCityName() == city_name:
                     city_list.append(vertex.getName())
@@ -100,7 +110,7 @@ class TrafficMap(Digraph):
 
     def getTrainStation(self, city_name):
         train_station_list = []
-        for vertex in self.vertices():
+        for vertex in self.verticesIter():
             if type(vertex) is TrainStation:
                 v_name = vertex.getName()
                 if len(v_name) > 2 and v_name[-1] in ['东', '西', '南', '北']:
@@ -112,23 +122,18 @@ class TrafficMap(Digraph):
 
     def getAirport(self, city_name):
         airport_list = []
-        for vertex in self.vertices():
+        for vertex in self.verticesIter():
             if type(vertex) is Airport:
                 if vertex.getCityName() == city_name:
                     airport_list.append(vertex.getName())
         return airport_list
 
-    def __str__(self):
-        super(TrafficMap, self).__str__()
-        result = str(self.sizeofVertices()) + "点："
-        for vertex in self._verticesDict:
-            result += ' ' + str(vertex)
-        result += '\n'
-        result += str(self.sizeofEdges()) + "边："
-        for edge in self.edges():
-            result += '\n' + str(edge)
-        return result
 
-
+TM = TrafficMap()
+TM.addTrains(RAILWAY_TABLE)
+TM.addPlanes(AIRLINE_TABLE)
 if __name__ == "__main__":
+
+    for edge in TM.edgesIter():
+        print(edge)
     pass
