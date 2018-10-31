@@ -1,10 +1,10 @@
 import math
 import time
 
-from front.ztingz.Configure import get_from_ll_dict, ztz_logger, ENLIGHTENING_VALUE
-from front.ztingz.trafficmap.Time import Time
-from front.ztingz.trafficmap.TrafficMap import TrafficMap, TM
-from front.ztingz.trafficmap.digraph import Vertex
+from ztingz.configure import get_from_ll_dict, ENLIGHTENING_VALUE, ztz_logger
+from ztingz.trafficmap.Time import Time
+from ztingz.trafficmap.TrafficMap import TrafficMap, TRAFFIC_MAP
+from ztingz.trafficmap.digraph import Vertex
 
 
 class AStar(object):
@@ -188,7 +188,7 @@ if __name__ == "__main__":
     _to = '两江国际机场'
     _departureTime = '0:0'
 
-    a = AStar(TM, _from, _to, _departureTime)
+    a = AStar(TRAFFIC_MAP, _from, _to, _departureTime)
     begin = time.time()
     print(a.getResult())
     end = time.time()

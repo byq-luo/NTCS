@@ -5,8 +5,8 @@ from django.shortcuts import render, redirect
 from django import forms
 from django.views.decorators.csrf import csrf_exempt
 
-from front.ztingz.AStar import AStar
-from front.ztingz.trafficmap.TrafficMap import TM
+from ztingz.AStar import AStar
+from ztingz.trafficmap.TrafficMap import TRAFFIC_MAP
 
 
 class UserForm(forms.Form):
@@ -21,7 +21,7 @@ def getAstar(start, end, departure_time):
     _from = start
     _to = end
     _departureTime = departure_time
-    a = AStar(TM, _from, _to, _departureTime)
+    a = AStar(TRAFFIC_MAP, _from, _to, _departureTime)
     plan, total, total_time = a.getResult()
     return plan, total, total_time
 
@@ -46,15 +46,15 @@ def index(request, info=None):
         starts = []
         ends = []
         if vehicle == 'auto':
-            starts = TM.getCityStation(starting)
-            ends = TM.getCityStation(destination)
+            starts = TRAFFIC_MAP.getCityStation(starting)
+            ends = TRAFFIC_MAP.getCityStation(destination)
         elif vehicle == 'train':
-            starts = TM.getTrainStation(starting)
-            ends = TM.getTrainStation(destination)
+            starts = TRAFFIC_MAP.getTrainStation(starting)
+            ends = TRAFFIC_MAP.getTrainStation(destination)
             train_checked = 'checked'
         elif vehicle == 'plane':
-            starts = TM.getAirport(starting)
-            ends = TM.getAirport(destination)
+            starts = TRAFFIC_MAP.getAirport(starting)
+            ends = TRAFFIC_MAP.getAirport(destination)
             plane_checked = 'checked'
         plans = []
         totals = []

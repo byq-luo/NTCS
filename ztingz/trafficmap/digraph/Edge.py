@@ -1,7 +1,7 @@
 from abc import abstractmethod
 
-from front.ztingz.trafficmap.digraph import Vertex
-from front.ztingz.trafficmap.digraph.configure import SEARCH_WEIGHT
+from ztingz.trafficmap.digraph.Vertex import Vertex
+from ztingz.trafficmap.digraph.configure import SEARCH_WEIGHT
 
 
 class Edge(object):

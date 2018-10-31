@@ -1,5 +1,6 @@
-from front.ztingz.trafficmap.digraph import Edge
-from front.ztingz.trafficmap import Time, TrainStation
+from ztingz.trafficmap.Time import Time
+from ztingz.trafficmap.TrainStation import TrainStation
+from ztingz.trafficmap.digraph.Edge import Edge
 
 
 class Train(Edge):

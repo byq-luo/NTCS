@@ -5,30 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="015f3b2b-c323-42c5-8f5a-9bf679f6540a" name="默认的" comment="">
-      <change afterPath="$PROJECT_DIR$/front/ztingz/trafficmap/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/ztingz/trafficmap/configure.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/ztingz/trafficmap/digraph/configure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/CSV/Airline.csv" beforeDir="false" afterPath="$PROJECT_DIR$/front/ztingz/trafficmap/CSV/Airline.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/CSV/Airport.csv" beforeDir="false" afterPath="$PROJECT_DIR$/front/ztingz/trafficmap/CSV/Airport.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/CSV/LL.csv" beforeDir="false" afterPath="$PROJECT_DIR$/front/ztingz/trafficmap/CSV/LL.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/CSV/RailwayLine.csv" beforeDir="false" afterPath="$PROJECT_DIR$/front/ztingz/trafficmap/CSV/RailwayLine.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/CSV/TrainStation.csv" beforeDir="false" afterPath="$PROJECT_DIR$/front/ztingz/trafficmap/CSV/TrainStation.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/front/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/ztingz/AStar.py" beforeDir="false" afterPath="$PROJECT_DIR$/front/ztingz/AStar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/ztingz/Airplane.py" beforeDir="false" afterPath="$PROJECT_DIR$/front/ztingz/trafficmap/Airplane.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/ztingz/Airport.py" beforeDir="false" afterPath="$PROJECT_DIR$/front/ztingz/trafficmap/Airport.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/ztingz/Configure.py" beforeDir="false" afterPath="$PROJECT_DIR$/front/ztingz/Configure.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/ztingz/Time.py" beforeDir="false" afterPath="$PROJECT_DIR$/front/ztingz/trafficmap/Time.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/ztingz/TrafficMap.py" beforeDir="false" afterPath="$PROJECT_DIR$/front/ztingz/trafficmap/TrafficMap.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/ztingz/Train.py" beforeDir="false" afterPath="$PROJECT_DIR$/front/ztingz/trafficmap/Train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/ztingz/TrainStation.py" beforeDir="false" afterPath="$PROJECT_DIR$/front/ztingz/trafficmap/TrainStation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/ztingz/digraph/AbstractCollection.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/ztingz/digraph/Digraph.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/ztingz/digraph/Edge.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/ztingz/digraph/Vertex.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/ztingz/digraph/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/ztingz/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/AStar.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/Configure.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/test.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/trafficmap/Airplane.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/trafficmap/Airport.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/trafficmap/CSV/Airline.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/trafficmap/CSV/Airport.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/trafficmap/CSV/LL-1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/trafficmap/CSV/LL.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/trafficmap/CSV/RailwayLine.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/trafficmap/CSV/TrainStation.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/trafficmap/Time.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/trafficmap/TrafficMap.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/trafficmap/Train.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/trafficmap/TrainStation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/trafficmap/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/trafficmap/configure.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/trafficmap/digraph/AbstractCollection.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/trafficmap/digraph/Digraph.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/trafficmap/digraph/Edge.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/trafficmap/digraph/Vertex.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/trafficmap/digraph/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/ztingz/trafficmap/digraph/configure.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.log" beforeDir="false" afterPath="$PROJECT_DIR$/test.log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +43,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/NTCS$a_star.coverage" NAME="a_star Coverage Results" MODIFIED="1538749938216" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
     <SUITE FILE_PATH="coverage/NTCS$way.coverage" NAME="way Coverage Results" MODIFIED="1538984196651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
-    <SUITE FILE_PATH="coverage/NTCS$configure__1_.coverage" NAME="configure (1) Coverage Results" MODIFIED="1540952884955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front/ztingz/trafficmap" />
+    <SUITE FILE_PATH="coverage/NTCS$configure__1_.coverage" NAME="configure (1) Coverage Results" MODIFIED="1540953410441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front/ztingz/trafficmap" />
     <SUITE FILE_PATH="coverage/NTCS$SFLA.coverage" NAME="SFLA Coverage Results" MODIFIED="1539584753581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
     <SUITE FILE_PATH="coverage/NTCS$AbstractCollection.coverage" NAME="AbstractCollection Coverage Results" MODIFIED="1540808182339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front/ztingz/digraph" />
     <SUITE FILE_PATH="coverage/NTCS$manage.coverage" NAME="manage Coverage Results" MODIFIED="1540618105911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -49,40 +53,40 @@
     <SUITE FILE_PATH="coverage/NTCS$station.coverage" NAME="station Coverage Results" MODIFIED="1538984372503" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
     <SUITE FILE_PATH="coverage/NTCS$Plane.coverage" NAME="Plane Coverage Results" MODIFIED="1539307127549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
     <SUITE FILE_PATH="coverage/NTCS$AStar__1_.coverage" NAME="AStar (1) Coverage Results" MODIFIED="1540653582145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front/ztingz" />
-    <SUITE FILE_PATH="coverage/NTCS$Airport.coverage" NAME="Airport Coverage Results" MODIFIED="1540810213989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front/ztingz" />
-    <SUITE FILE_PATH="coverage/NTCS$Train.coverage" NAME="Train Coverage Results" MODIFIED="1540262881692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
+    <SUITE FILE_PATH="coverage/NTCS$Airport.coverage" NAME="Airport Coverage Results" MODIFIED="1540954731217" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz/trafficmap" />
     <SUITE FILE_PATH="coverage/NTCS$Vertex__1_.coverage" NAME="Vertex (1) Coverage Results" MODIFIED="1540808225656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front/ztingz/digraph" />
+    <SUITE FILE_PATH="coverage/NTCS$Train.coverage" NAME="Train Coverage Results" MODIFIED="1540954438531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front/ztingz/trafficmap" />
     <SUITE FILE_PATH="coverage/NTCS$mysfla.coverage" NAME="mysfla Coverage Results" MODIFIED="1539586459467" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
     <SUITE FILE_PATH="coverage/NTCS$vertex.coverage" NAME="vertex Coverage Results" MODIFIED="1538984339329" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
-    <SUITE FILE_PATH="coverage/NTCS$configure.coverage" NAME="configure Coverage Results" MODIFIED="1540952789820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front/ztingz/traffimap" />
-    <SUITE FILE_PATH="coverage/NTCS$Digraph.coverage" NAME="Digraph Coverage Results" MODIFIED="1540808097170" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front/ztingz" />
+    <SUITE FILE_PATH="coverage/NTCS$configure.coverage" NAME="configure Coverage Results" MODIFIED="1540954959430" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
+    <SUITE FILE_PATH="coverage/NTCS$Digraph.coverage" NAME="Digraph Coverage Results" MODIFIED="1540954567747" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz/trafficmap/digraph" />
     <SUITE FILE_PATH="coverage/NTCS$edge.coverage" NAME="edge Coverage Results" MODIFIED="1538984342345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
-    <SUITE FILE_PATH="coverage/NTCS$Edge.coverage" NAME="Edge Coverage Results" MODIFIED="1540804611341" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front/ztingz" />
+    <SUITE FILE_PATH="coverage/NTCS$Edge.coverage" NAME="Edge Coverage Results" MODIFIED="1540953678679" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front/ztingz/trafficmap/digraph" />
     <SUITE FILE_PATH="coverage/NTCS$Station.coverage" NAME="Station Coverage Results" MODIFIED="1538985080416" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
     <SUITE FILE_PATH="coverage/NTCS$Test__Lib.coverage" NAME="Test: Lib Coverage Results" MODIFIED="1538819116995" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/NTCS$Astar_1.coverage" NAME="Astar_1 Coverage Results" MODIFIED="1540713608578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front/ztingz" />
     <SUITE FILE_PATH="coverage/NTCS$models.coverage" NAME="models Coverage Results" MODIFIED="1538749584642" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front" />
     <SUITE FILE_PATH="coverage/NTCS$dijkstra.coverage" NAME="dijkstra Coverage Results" MODIFIED="1539589054566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
-    <SUITE FILE_PATH="coverage/NTCS$Vertex.coverage" NAME="Vertex Coverage Results" MODIFIED="1540803855630" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front/ztingz" />
+    <SUITE FILE_PATH="coverage/NTCS$Vertex.coverage" NAME="Vertex Coverage Results" MODIFIED="1540953633073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front/ztingz/trafficmap/digraph" />
     <SUITE FILE_PATH="coverage/NTCS$base.coverage" NAME="base Coverage Results" MODIFIED="1538657966823" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Lib/site-packages/django/core/handlers" />
     <SUITE FILE_PATH="coverage/NTCS$Way.coverage" NAME="Way Coverage Results" MODIFIED="1538984823370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
     <SUITE FILE_PATH="coverage/NTCS$exception.coverage" NAME="exception Coverage Results" MODIFIED="1538819490243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Lib/site-packages/django/core/handlers" />
     <SUITE FILE_PATH="coverage/NTCS$views.coverage" NAME="views Coverage Results" MODIFIED="1540793984412" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front" />
-    <SUITE FILE_PATH="coverage/NTCS$Time.coverage" NAME="Time Coverage Results" MODIFIED="1539842252440" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
     <SUITE FILE_PATH="coverage/NTCS$ASart_try.coverage" NAME="ASart_try Coverage Results" MODIFIED="1540260988743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
     <SUITE FILE_PATH="coverage/NTCS$ASart.coverage" NAME="ASart Coverage Results" MODIFIED="1540615527219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
+    <SUITE FILE_PATH="coverage/NTCS$Time.coverage" NAME="Time Coverage Results" MODIFIED="1540954654104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz/trafficmap" />
     <SUITE FILE_PATH="coverage/NTCS$test.coverage" NAME="test Coverage Results" MODIFIED="1540191951543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
     <SUITE FILE_PATH="coverage/NTCS$Graph.coverage" NAME="Graph Coverage Results" MODIFIED="1538912388096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
-    <SUITE FILE_PATH="coverage/NTCS$Airplane.coverage" NAME="Airplane Coverage Results" MODIFIED="1540619703821" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front/ztingz" />
+    <SUITE FILE_PATH="coverage/NTCS$Airplane.coverage" NAME="Airplane Coverage Results" MODIFIED="1540954742615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz/trafficmap" />
     <SUITE FILE_PATH="coverage/NTCS$sfla.coverage" NAME="sfla Coverage Results" MODIFIED="1539334210805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../../Downloads" />
-    <SUITE FILE_PATH="coverage/NTCS$TrafficMap__1_.coverage" NAME="TrafficMap (1) Coverage Results" MODIFIED="1540953123103" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front/ztingz/trafficmap" />
+    <SUITE FILE_PATH="coverage/NTCS$TrafficMap__1_.coverage" NAME="TrafficMap (1) Coverage Results" MODIFIED="1540954441768" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front/ztingz/trafficmap" />
     <SUITE FILE_PATH="coverage/NTCS$digraph.coverage" NAME="digraph Coverage Results" MODIFIED="1538984344564" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
     <SUITE FILE_PATH="coverage/NTCS$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1540713192186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Lib/site-packages/astar" />
-    <SUITE FILE_PATH="coverage/NTCS$Configure.coverage" NAME="Configure Coverage Results" MODIFIED="1540804456559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front/ztingz" />
-    <SUITE FILE_PATH="coverage/NTCS$TrainStation.coverage" NAME="TrainStation Coverage Results" MODIFIED="1540810781266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front/ztingz" />
-    <SUITE FILE_PATH="coverage/NTCS$TrafficMap.coverage" NAME="TrafficMap Coverage Results" MODIFIED="1540814024277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front/ztingz" />
+    <SUITE FILE_PATH="coverage/NTCS$Configure.coverage" NAME="Configure Coverage Results" MODIFIED="1540954918498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
+    <SUITE FILE_PATH="coverage/NTCS$TrainStation.coverage" NAME="TrainStation Coverage Results" MODIFIED="1540954790426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz/trafficmap" />
+    <SUITE FILE_PATH="coverage/NTCS$TrafficMap.coverage" NAME="TrafficMap Coverage Results" MODIFIED="1540954792981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz/trafficmap" />
     <SUITE FILE_PATH="coverage/NTCS$trafficmap.coverage" NAME="trafficmap Coverage Results" MODIFIED="1538964931388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
-    <SUITE FILE_PATH="coverage/NTCS$AStar.coverage" NAME="AStar Coverage Results" MODIFIED="1540795832501" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/front/ztingz" />
+    <SUITE FILE_PATH="coverage/NTCS$AStar.coverage" NAME="AStar Coverage Results" MODIFIED="1540954962283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ztingz" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -105,13 +109,13 @@
     <session id="1830825023">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="37" />
+          <entry key="project.closed" value="39" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.3" value="5" />
-          <entry key="project.open.time.4" value="30" />
+          <entry key="project.open.time.3" value="6" />
+          <entry key="project.open.time.4" value="31" />
           <entry key="project.open.time.5" value="5" />
           <entry key="project.open.time.85" value="1" />
-          <entry key="project.opened" value="42" />
+          <entry key="project.opened" value="44" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -119,11 +123,11 @@
           <entry key="ASart" value="2941" />
           <entry key="AStar" value="21" />
           <entry key="css" value="212" />
-          <entry key="dummy" value="409" />
+          <entry key="dummy" value="421" />
           <entry key="html" value="2410" />
           <entry key="js" value="7" />
-          <entry key="log" value="175" />
-          <entry key="py" value="41270" />
+          <entry key="log" value="176" />
+          <entry key="py" value="41427" />
           <entry key="txt" value="18" />
         </counts>
       </usages-collector>
@@ -132,9 +136,9 @@
           <entry key="CSS" value="212" />
           <entry key="HTML" value="2410" />
           <entry key="JavaScript" value="7" />
-          <entry key="Log" value="127" />
-          <entry key="PLAIN_TEXT" value="475" />
-          <entry key="Python" value="44232" />
+          <entry key="Log" value="128" />
+          <entry key="PLAIN_TEXT" value="487" />
+          <entry key="Python" value="44389" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -147,8 +151,8 @@
           <entry key="html" value="27" />
           <entry key="js" value="1" />
           <entry key="json" value="1" />
-          <entry key="log" value="25" />
-          <entry key="py" value="530" />
+          <entry key="log" value="27" />
+          <entry key="py" value="581" />
           <entry key="pyi" value="8" />
           <entry key="txt" value="2" />
         </counts>
@@ -160,9 +164,9 @@
           <entry key="Ini" value="1" />
           <entry key="JSON" value="1" />
           <entry key="JavaScript" value="1" />
-          <entry key="Log" value="22" />
+          <entry key="Log" value="24" />
           <entry key="PLAIN_TEXT" value="7" />
-          <entry key="Python" value="531" />
+          <entry key="Python" value="582" />
           <entry key="PythonStub" value="8" />
         </counts>
       </usages-collector>
@@ -173,25 +177,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front/ztingz/trafficmap/TrafficMap.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#51#0" expanded="true" />
-                <marker date="1540952924476" expanded="true" signature="594:600" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/front/ztingz/trafficmap/digraph/Digraph.py">
+        <entry file="file://$PROJECT_DIR$/front/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="418">
+              <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
               <folding>
-                <element signature="e#0#62#0" expanded="true" />
+                <element signature="e#0#11#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -253,21 +245,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ztingz/AbstractCollection.py" />
-        <option value="$PROJECT_DIR$/ztingz/Edge.py" />
-        <option value="$PROJECT_DIR$/ztingz/Airplane.py" />
-        <option value="$PROJECT_DIR$/ztingz/test.py" />
-        <option value="$PROJECT_DIR$/ztingz/AStar.py" />
-        <option value="$PROJECT_DIR$/ztingz/ASart_try.py" />
-        <option value="$PROJECT_DIR$/ztingz/Train.py" />
-        <option value="$PROJECT_DIR$/ztingz/Time.py" />
-        <option value="$PROJECT_DIR$/ztingz/Digraph.py" />
-        <option value="$PROJECT_DIR$/ztingz/TrafficMap.py" />
-        <option value="$PROJECT_DIR$/ztingz/TrainStation.py" />
-        <option value="$PROJECT_DIR$/ztingz/Vertex.py" />
-        <option value="$PROJECT_DIR$/ztingz/test.log" />
-        <option value="$PROJECT_DIR$/ztingz/Airport.py" />
-        <option value="$PROJECT_DIR$/ztingz/Configure.py" />
         <option value="$PROJECT_DIR$/ztingz/ASart" />
         <option value="$PROJECT_DIR$/front/ztingz/AStar" />
         <option value="$PROJECT_DIR$/NTCS/settings.py" />
@@ -294,16 +271,31 @@
         <option value="$PROJECT_DIR$/front/ztingz/Train.py" />
         <option value="$PROJECT_DIR$/front/ztingz/TrainStation.py" />
         <option value="$PROJECT_DIR$/front/ztingz/AStar.py" />
-        <option value="$PROJECT_DIR$/front/views.py" />
         <option value="$PROJECT_DIR$/front/ztingz/TrafficMap.py" />
         <option value="$PROJECT_DIR$/front/ztingz/Time.py" />
         <option value="$PROJECT_DIR$/front/ztingz/traffimap/configure.py" />
-        <option value="$PROJECT_DIR$/front/ztingz/trafficmap/TrafficMap.py" />
         <option value="$PROJECT_DIR$/front/ztingz/Configure.py" />
-        <option value="$PROJECT_DIR$/front/ztingz/trafficmap/configure.py" />
         <option value="$PROJECT_DIR$/front/ztingz/trafficmap/digraph/configure.py" />
-        <option value="$PROJECT_DIR$/front/ztingz/trafficmap/digraph/Edge.py" />
         <option value="$PROJECT_DIR$/front/ztingz/trafficmap/digraph/Vertex.py" />
+        <option value="$PROJECT_DIR$/front/ztingz/trafficmap/configure.py" />
+        <option value="$PROJECT_DIR$/front/ztingz/trafficmap/TrafficMap.py" />
+        <option value="$PROJECT_DIR$/front/ztingz/trafficmap/digraph/Edge.py" />
+        <option value="$PROJECT_DIR$/front/ztingz/trafficmap/digraph/Digraph.py" />
+        <option value="$PROJECT_DIR$/front/ztingz/trafficmap/Airplane.py" />
+        <option value="$PROJECT_DIR$/front/ztingz/trafficmap/Airport.py" />
+        <option value="$PROJECT_DIR$/front/ztingz/trafficmap/Train.py" />
+        <option value="$PROJECT_DIR$/front/ztingz/trafficmap/TrainStation.py" />
+        <option value="$PROJECT_DIR$/ztingz/trafficmap/digraph/Digraph.py" />
+        <option value="$PROJECT_DIR$/ztingz/trafficmap/digraph/Edge.py" />
+        <option value="$PROJECT_DIR$/ztingz/trafficmap/Airplane.py" />
+        <option value="$PROJECT_DIR$/ztingz/trafficmap/Airport.py" />
+        <option value="$PROJECT_DIR$/ztingz/trafficmap/Train.py" />
+        <option value="$PROJECT_DIR$/ztingz/trafficmap/TrainStation.py" />
+        <option value="$PROJECT_DIR$/ztingz/trafficmap/TrafficMap.py" />
+        <option value="$PROJECT_DIR$/ztingz/Configure.py" />
+        <option value="$PROJECT_DIR$/ztingz/AStar.py" />
+        <option value="$PROJECT_DIR$/ztingz/configure.py" />
+        <option value="$PROJECT_DIR$/front/views.py" />
       </list>
     </option>
   </component>
@@ -342,7 +334,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -358,20 +349,13 @@
             <path>
               <item name="NTCS" type="b2602c69:ProjectViewProjectNode" />
               <item name="NTCS" type="462c0819:PsiDirectoryNode" />
-              <item name="front" type="462c0819:PsiDirectoryNode" />
               <item name="ztingz" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NTCS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NTCS" type="462c0819:PsiDirectoryNode" />
-              <item name="front" type="462c0819:PsiDirectoryNode" />
-              <item name="ztingz" type="462c0819:PsiDirectoryNode" />
-              <item name="trafficmap" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -383,15 +367,15 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Users\10610\Documents\DMT\DataStructure\NTCS\templates" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Users\10610\Documents\DMT\DataStructure\NTCS" />
       <recent name="E:\Users\10610\Documents\DMT\DataStructure\NTCS\front\ztingz\trafficmap" />
       <recent name="E:\Users\10610\Documents\DMT\DataStructure\NTCS\front\ztingz\traffimap" />
       <recent name="E:\Users\10610\Documents\DMT\DataStructure\NTCS\front\ztingz\digraph" />
       <recent name="E:\Users\10610\Documents\DMT\DataStructure\NTCS\front" />
-      <recent name="E:\Users\10610\Documents\DMT\DataStructure\NTCS\ztingz" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Users\10610\Documents\DMT\DataStructure\NTCS\templates" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -406,8 +390,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.TrafficMap (1)">
-    <configuration name="TrafficMap (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Django server.NTCS">
+    <configuration name="AStar" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="NTCS" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -415,12 +399,34 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/front/ztingz/trafficmap" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ztingz" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/front/ztingz/trafficmap/TrafficMap.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ztingz/AStar.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Configure" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="NTCS" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ztingz" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="E:\Users\10610\Documents\DMT\DataStructure\NTCS\ztingz\configure.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -437,12 +443,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/front/ztingz" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ztingz/trafficmap" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="E:\Users\10610\Documents\DMT\DataStructure\NTCS\front\ztingz\traffimap\TrafficMap.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ztingz/trafficmap/TrafficMap.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -459,34 +465,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/front/ztingz" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ztingz/trafficmap" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="E:\Users\10610\Documents\DMT\DataStructure\NTCS\front\ztingz\traffimap\TrainStation.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="configure (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="NTCS" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/front/ztingz/trafficmap" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/front/ztingz/trafficmap/configure.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ztingz/trafficmap/TrainStation.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -503,12 +487,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/front/ztingz/traffimap" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ztingz" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/front/ztingz/traffimap/configure.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ztingz/configure.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -545,15 +529,15 @@
       <item itemvalue="Django server.NTCS" />
       <item itemvalue="Python.TrafficMap" />
       <item itemvalue="Python.TrainStation" />
+      <item itemvalue="Python.AStar" />
+      <item itemvalue="Python.Configure" />
       <item itemvalue="Python.configure" />
-      <item itemvalue="Python.configure (1)" />
-      <item itemvalue="Python.TrafficMap (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.TrafficMap (1)" />
-        <item itemvalue="Python.configure (1)" />
+        <item itemvalue="Python.AStar" />
         <item itemvalue="Python.configure" />
+        <item itemvalue="Python.Configure" />
         <item itemvalue="Python.TrafficMap" />
         <item itemvalue="Python.TrainStation" />
       </list>
@@ -604,7 +588,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="886" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1704871" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1747851" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.3295129" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -819,22 +803,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/front/ztingz/Astar_1.py" />
     <entry file="file://$PROJECT_DIR$/front/ztingz/Dijkstra.py" />
-    <entry file="file://$PROJECT_DIR$/test.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/front/test.log" />
-    <entry file="file://$PROJECT_DIR$/front/ztingz/test.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider">
-        <state>
-          <caret lean-forward="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="54" column="36" selection-start-line="54" selection-start-column="36" selection-end-line="54" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/NTCS/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -891,14 +860,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/ztingz/trafficmap/digraph/__init__.py">
+    <entry file="file://$PROJECT_DIR$/ztingz/trafficmap/digraph/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="5" column="19" lean-forward="true" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/ztingz/__init__.py">
+    <entry file="file://$PROJECT_DIR$/ztingz/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="7" column="31" lean-forward="true" selection-end-line="8" />
@@ -921,149 +890,169 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/front/ztingz/test.py" />
-    <entry file="file://$PROJECT_DIR$/front/ztingz/AStar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3515">
-          <caret line="191" column="23" selection-start-line="191" selection-start-column="23" selection-end-line="191" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="68" column="59" selection-start-line="68" selection-start-column="59" selection-end-line="68" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/ztingz/trafficmap/Airplane.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="21" column="82" selection-start-line="21" selection-start-column="82" selection-end-line="21" selection-end-column="82" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/ztingz/trafficmap/Airport.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/ztingz/trafficmap/__init__.py">
+    <entry file="file://$PROJECT_DIR$/ztingz/trafficmap/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/ztingz/trafficmap/Time.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/ztingz/trafficmap/Train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/ztingz/trafficmap/digraph/AbstractCollection.py">
+    <entry file="file://$PROJECT_DIR$/ztingz/trafficmap/digraph/AbstractCollection.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="665">
           <caret line="35" column="22" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/ztingz/trafficmap/digraph/configure.py">
+    <entry file="file://$PROJECT_DIR$/ztingz/trafficmap/digraph/configure.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="22" selection-start-column="22" selection-end-column="22" />
+        <state relative-caret-position="19">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/ztingz/trafficmap/digraph/Vertex.py">
+    <entry file="file://$PROJECT_DIR$/ztingz/trafficmap/digraph/Edge.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+            <marker date="1540954560467" expanded="true" signature="620:626" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ztingz/trafficmap/digraph/Vertex.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding>
             <marker date="1540953104242" expanded="true" signature="351:357" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/ztingz/trafficmap/digraph/Edge.py">
+    <entry file="file://$PROJECT_DIR$/ztingz/trafficmap/digraph/Digraph.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="67" lean-forward="true" selection-start-line="3" selection-start-column="67" selection-end-line="3" selection-end-column="67" />
+        <state relative-caret-position="75">
+          <caret line="55" column="24" lean-forward="true" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="24" />
           <folding>
-            <element signature="e#0#30#0" expanded="true" />
-            <marker date="1540953090077" expanded="true" signature="625:631" ph="..." />
+            <element signature="e#0#75#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/ztingz/trafficmap/configure.py">
+    <entry file="file://$PROJECT_DIR$/ztingz/trafficmap/configure.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="40" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
+        <state relative-caret-position="526">
+          <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/ztingz/trafficmap/TrainStation.py">
+    <entry file="file://$PROJECT_DIR$/ztingz/trafficmap/Time.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="10" lean-forward="true" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ztingz/trafficmap/Airport.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="51" lean-forward="true" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ztingz/trafficmap/Airplane.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ztingz/trafficmap/Train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ztingz/trafficmap/TrainStation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="11" lean-forward="true" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ztingz/trafficmap/TrafficMap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="140" lean-forward="true" selection-start-line="140" selection-end-line="140" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+            <marker date="1540954899130" expanded="true" signature="560:566" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ztingz/test.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider">
         <state>
           <caret lean-forward="true" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="54" column="36" selection-start-line="54" selection-start-column="36" selection-end-line="54" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/ztingz/trafficmap/TrafficMap.py">
+    <entry file="file://$PROJECT_DIR$/ztingz/configure.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-            <marker date="1540952924476" expanded="true" signature="594:600" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front/ztingz/Configure.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1381">
-          <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
+        <state relative-caret-position="143">
+          <caret line="18" column="46" lean-forward="true" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/ztingz/trafficmap/digraph/Digraph.py">
+    <entry file="file://$PROJECT_DIR$/ztingz/AStar.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="418">
+          <caret line="22" column="23" lean-forward="true" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
           <folding>
-            <element signature="e#0#62#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider">
+        <state relative-caret-position="285">
+          <caret line="60" column="60" lean-forward="true" selection-end-line="2232" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>

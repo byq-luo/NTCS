@@ -14,7 +14,7 @@ ENLIGHTENING_VALUE = 400
 
 def readLL(filename):
     vll_dict = {}
-    with open(current_path.replace('ztingz', '') + "/CSV/" + filename, "r", encoding="utf-8") as f:
+    with open(current_path + "/trafficmap/CSV/" + filename, "r", encoding="utf-8") as f:
         reader = csv.reader(f)
         fieldnames = next(reader)  # 获取数据的第一列，作为后续要转为字典的键名 生成器，next方法获取
         csv_reader = csv.DictReader(f, fieldnames=fieldnames)  # list of keys for the dict 以list的形式存放键名
@@ -63,8 +63,8 @@ def getLLFromAPI(address):
 def updateVLL(traffic_map, filename):
     addresses = []
     for v in traffic_map.verticesIter():
-        from front.ztingz.trafficmap.TrainStation import TrainStation
-        from front.ztingz.trafficmap.Airport import Airport
+        from ztingz import TrainStation
+        from ztingz import Airport
         if type(v) == TrainStation:
             if len(v.getName()) >= 3 or v.getName()[-1] in ['东', '西', '南', '北']:
                 addresses.append(v.getName() + '站')

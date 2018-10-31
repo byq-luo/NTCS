@@ -3,6 +3,7 @@ import os
 
 current_path = os.path.dirname(__file__)
 
+
 def readTable(filename, need_fields: str):
     need_fields = need_fields.split(' ')
     cols = []
@@ -22,3 +23,8 @@ AIRLINE_TABLE = readTable("Airline.csv", "startCity lastCity Company "
                                          "AirlineCode StartDrome ArriveDrome "
                                          "StartTime ArriveTime Mode")
 RAILWAY_TABLE = readTable("RailwayLine.csv", "ID Type Station A_Time D_Time")
+
+if __name__ == "__main__":
+    print(AIRLINE_TABLE)
+    print(RAILWAY_TABLE)
+    pass

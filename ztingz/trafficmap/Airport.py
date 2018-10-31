@@ -1,7 +1,8 @@
 import csv
 import os
-from front.ztingz.trafficmap import Time
-from front.ztingz.trafficmap.digraph import Vertex
+
+from ztingz.trafficmap.Time import Time
+from ztingz.trafficmap.digraph.Vertex import Vertex
 
 # 获得此文件的房问路径，防止找不到文件路径
 current_path = os.path.dirname(__file__)
@@ -10,7 +11,7 @@ current_path = os.path.dirname(__file__)
 # 获得机场的城市信息字典
 def getAirportCityDict(filename):
     city_dict = {}
-    with open(current_path.replace('ztingz', '') + "/CSV/" + filename, "r", encoding="utf-8-sig") as f:
+    with open(current_path + "/CSV/" + filename, "r", encoding="utf-8-sig") as f:
         reader = csv.reader(f)
         fieldnames = next(reader)  # 获取数据的第一列，作为后续要转为字典的键名 生成器，next方法获取
         csv_reader = csv.DictReader(f, fieldnames=fieldnames)  # list of keys for the dict 以list的形式存放键名

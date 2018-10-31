@@ -1,6 +1,6 @@
-from front.ztingz.trafficmap.digraph import AbstractCollection
-from front.ztingz.trafficmap.digraph import Vertex
-from front.ztingz.trafficmap.digraph import Edge
+from ztingz.trafficmap.digraph.AbstractCollection import AbstractCollection
+from ztingz.trafficmap.digraph.Edge import Edge
+from ztingz.trafficmap.digraph.Vertex import Vertex
 
 
 class Digraph(AbstractCollection):
@@ -117,6 +117,12 @@ class Digraph(AbstractCollection):
 
 
 if __name__ == "__main__":
+    v1 = Vertex('福州')
+    v2 = Vertex('桂林')
+    e1 = Edge(v1, v2, money=100)
     g = Digraph()
+    g.addVertex(v1)
+    g.addVertex(v2)
+    g.addEdge(e1)
     print(g)
     pass

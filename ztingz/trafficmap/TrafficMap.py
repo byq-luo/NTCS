@@ -1,10 +1,10 @@
-from front.ztingz.trafficmap.digraph import Digraph
-from front.ztingz.trafficmap.Time import Time
-from front.ztingz.trafficmap.TrainStation import TrainStation
-from front.ztingz.trafficmap.Airport import Airport
-from front.ztingz.trafficmap.Train import Train
-from front.ztingz.trafficmap.Airplane import Airplane
-from front.ztingz.trafficmap.configure import RAILWAY_TABLE, AIRLINE_TABLE
+from ztingz.trafficmap.Airplane import Airplane
+from ztingz.trafficmap.Airport import Airport
+from ztingz.trafficmap.Time import Time
+from ztingz.trafficmap.Train import Train
+from ztingz.trafficmap.TrainStation import TrainStation
+from ztingz.trafficmap.configure import RAILWAY_TABLE, AIRLINE_TABLE
+from ztingz.trafficmap.digraph.Digraph import Digraph
 
 
 class TrafficMap(Digraph):
@@ -135,12 +135,12 @@ class TrafficMap(Digraph):
 
 
 # 实例化交通图
-TM = TrafficMap()
-TM.addTrains(RAILWAY_TABLE)
-TM.addPlanes(AIRLINE_TABLE)
+TRAFFIC_MAP = TrafficMap()
+TRAFFIC_MAP.addTrains(RAILWAY_TABLE)
+TRAFFIC_MAP.addPlanes(AIRLINE_TABLE)
 
 if __name__ == "__main__":
 
-    for edge in TM.edgesIter():
+    for edge in TRAFFIC_MAP.edgesIter():
         print(edge)
     pass
