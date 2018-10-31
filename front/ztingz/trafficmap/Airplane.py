@@ -1,6 +1,6 @@
-from front.ztingz.digraph.Edge import Edge
-from front.ztingz.Airport import Airport
-from front.ztingz.Time import Time
+from front.ztingz.trafficmap.digraph import Edge
+from front.ztingz.trafficmap.Airport import Airport
+from front.ztingz.trafficmap.Time import Time
 
 
 class Airplane(Edge):

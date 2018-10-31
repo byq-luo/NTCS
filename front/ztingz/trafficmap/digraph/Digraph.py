@@ -1,6 +1,6 @@
-from front.ztingz.digraph.AbstractCollection import AbstractCollection
-from front.ztingz.digraph.Vertex import Vertex
-from front.ztingz.digraph.Edge import Edge
+from front.ztingz.trafficmap.digraph import AbstractCollection
+from front.ztingz.trafficmap.digraph import Vertex
+from front.ztingz.trafficmap.digraph import Edge
 
 
 class Digraph(AbstractCollection):

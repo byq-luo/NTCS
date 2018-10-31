@@ -1,7 +1,7 @@
 from abc import abstractmethod
 
-from front.ztingz.Configure import SEARCH_WEIGHT
-from front.ztingz.digraph.Vertex import Vertex
+from front.ztingz.trafficmap.digraph import Vertex
+from front.ztingz.trafficmap.digraph.configure import SEARCH_WEIGHT
 
 
 class Edge(object):
@@ -64,4 +64,4 @@ if __name__ == "__main__":
     v2 = Vertex('北京')
     e1 = Edge(v1, v2, time=12)
     e2 = Edge(v1, v2, time=10)
-    print(e1 ==e2)
+    print(e1 == e2)

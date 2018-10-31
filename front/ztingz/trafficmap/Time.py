@@ -3,6 +3,14 @@ from datetime import datetime, timedelta
 
 
 class Time(object):
+    """时间类
+
+        这个类描述交通图中的时间信息
+        每条边有1个受保护成员属性:
+            日期时间_datetime
+
+        """
+
     def __init__(self, strDate='2018-1-1', strTime=...):
         self._datetime = datetime.strptime(strDate + ' ' + strTime, format('%Y-%m-%d %H:%M'))
 

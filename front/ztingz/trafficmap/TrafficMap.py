@@ -1,10 +1,10 @@
-from front.ztingz.Configure import RAILWAY_TABLE, AIRLINE_TABLE
-from front.ztingz.Time import Time
-from front.ztingz.Airplane import Airplane
-from front.ztingz.Airport import Airport
-from front.ztingz.Train import Train
-from front.ztingz.TrainStation import TrainStation
-from front.ztingz.digraph.Digraph import Digraph
+from front.ztingz.trafficmap.digraph import Digraph
+from front.ztingz.trafficmap.Time import Time
+from front.ztingz.trafficmap.TrainStation import TrainStation
+from front.ztingz.trafficmap.Airport import Airport
+from front.ztingz.trafficmap.Train import Train
+from front.ztingz.trafficmap.Airplane import Airplane
+from front.ztingz.trafficmap.configure import RAILWAY_TABLE, AIRLINE_TABLE
 
 
 class TrafficMap(Digraph):
@@ -54,6 +54,7 @@ class TrafficMap(Digraph):
         plane = Airplane(flight_number, company, mode, v1, v2, startTime, arriveTime, **kwargs)
         return self.addEdge(plane)
 
+    # 从列车时刻表获取列车信息的方法
     def addTrains(self, timetable: list, **kwargs):
         for row in timetable:
             if row['D_Time'] == '-':
@@ -76,6 +77,7 @@ class TrafficMap(Digraph):
             self.addTrain(train_number, train_type, v1_name, v2_name,
                           start_time, arrive_time, waiting_time, **kwargs)
 
+    # 从航班时刻表获取航班信息的方法
     def addPlanes(self, timetable: list, **kwargs):
         for row in timetable:
             if row['Company'] == '没有航班':
@@ -93,6 +95,7 @@ class TrafficMap(Digraph):
                           v1_name, v1_abbreviation, v2_name, v2_abbreviation,
                           start_time, arrive_time, **kwargs)
 
+    # 获得属于某一城市的节点，包括列车站和机场
     def getCityStation(self, city_name):
         city_list = []
         for vertex in self.verticesIter():
@@ -108,6 +111,7 @@ class TrafficMap(Digraph):
                     city_list.append(vertex.getName())
         return city_list
 
+    # 获得属于某一城市的列车站
     def getTrainStation(self, city_name):
         train_station_list = []
         for vertex in self.verticesIter():
@@ -120,6 +124,7 @@ class TrafficMap(Digraph):
                     train_station_list.append(vertex.getName())
         return train_station_list
 
+    # 获得属于某一城市的机场站
     def getAirport(self, city_name):
         airport_list = []
         for vertex in self.verticesIter():
@@ -129,9 +134,11 @@ class TrafficMap(Digraph):
         return airport_list
 
 
+# 实例化交通图
 TM = TrafficMap()
 TM.addTrains(RAILWAY_TABLE)
 TM.addPlanes(AIRLINE_TABLE)
+
 if __name__ == "__main__":
 
     for edge in TM.edgesIter():

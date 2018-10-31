@@ -6,7 +6,7 @@ from django import forms
 from django.views.decorators.csrf import csrf_exempt
 
 from front.ztingz.AStar import AStar
-from front.ztingz.TrafficMap import TM
+from front.ztingz.trafficmap.TrafficMap import TM
 
 
 class UserForm(forms.Form):

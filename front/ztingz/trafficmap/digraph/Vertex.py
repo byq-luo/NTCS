@@ -1,6 +1,3 @@
-from abc import abstractmethod
-
-
 class Vertex(object):
     """点类
 

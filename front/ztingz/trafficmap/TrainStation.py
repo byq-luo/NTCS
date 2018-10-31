@@ -1,5 +1,5 @@
-from front.ztingz.digraph.Vertex import Vertex
-from front.ztingz import Time
+from front.ztingz.trafficmap.digraph import Vertex
+from front.ztingz.trafficmap import Time
 
 
 class TrainStation(Vertex):

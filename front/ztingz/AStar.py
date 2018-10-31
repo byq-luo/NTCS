@@ -2,9 +2,9 @@ import math
 import time
 
 from front.ztingz.Configure import get_from_ll_dict, ztz_logger, ENLIGHTENING_VALUE
-from front.ztingz.Time import Time
-from front.ztingz.TrafficMap import TrafficMap, TM
-from front.ztingz.digraph.Vertex import Vertex
+from front.ztingz.trafficmap.Time import Time
+from front.ztingz.trafficmap.TrafficMap import TrafficMap, TM
+from front.ztingz.trafficmap.digraph import Vertex
 
 
 class AStar(object):

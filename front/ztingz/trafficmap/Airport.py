@@ -1,7 +1,7 @@
 import csv
 import os
-from front.ztingz import Time
-from front.ztingz.digraph.Vertex import Vertex
+from front.ztingz.trafficmap import Time
+from front.ztingz.trafficmap.digraph import Vertex
 
 # 获得此文件的房问路径，防止找不到文件路径
 current_path = os.path.dirname(__file__)
