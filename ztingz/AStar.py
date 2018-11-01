@@ -1,51 +1,73 @@
 import math
 import time
+from datetime import timedelta
 
-from ztingz.configure import get_from_ll_dict, ENLIGHTENING_VALUE, ztz_logger
+from ztingz.configure import ENLIGHTENING_VALUE, ztz_logger, STRATEGY
 from ztingz.trafficmap.Time import Time
 from ztingz.trafficmap.TrafficMap import TrafficMap, TRAFFIC_MAP
+from ztingz.trafficmap.configure import get_from_ll_dict
 from ztingz.trafficmap.digraph import Vertex
 
 
 class AStar(object):
-    def __init__(self, g: TrafficMap, start_name: str, end_name: str, departure_time):
+    """A*算法类类
+
+        这个类实现了交通图中最短路径的搜索
+        每个A*对象有12个受保护成员属性:
+            要搜索的图_map
+            始点_start
+            终点_end
+            出发时间_departureTime
+            当前时间_nowTime
+            出行策略_strategy
+
+            用来存放所有已经生成但是还是没有被扩展的节点_open
+            用来存放所有已经扩展的节点_close
+            {此节点名:父节点}字典_cameFrom
+            {此节点名:父节点到此节点的边}_byways
+            {此节点名:到此节点的时间}_arrivalTime
+            {此节点名:到达该点的所用付出的代价}_gScore
+            {此节点名:到达终点预计要付出的代价}_fScore
+
+        """
+    __slots__ = ('_map', '_start', '_end', '_departureTime', '_nowTime', '_strategy',
+                 '_open', '_close', '_cameFrom', '_howBy', '_arrivalTime',
+                 '_gScore', '_fScore')
+
+    def __init__(self, g: TrafficMap, start_name: str, end_name: str, departure_time, strategy: str):
         self._map = g
         self._start = g.findVertex(start_name)
-        self._end = g.findVertex(end_name)
+
         if self._start is None:
             raise Exception("不存在的点", start_name)
+        self._end = g.findVertex(end_name)
         if self._end is None:
             raise Exception("不存在的点", end_name)
+
         self._departureTime = Time(strTime=departure_time)
         self._nowTime = self._departureTime
-        # 用来存放所有已经生成但是还是没有被扩展的节点
+        self._strategy = strategy
+
         self._open = [self._start]
-        # 用来存放所有已经扩展的节点
         self._close = []
         self._cameFrom = {}
-        self._byways = {}
-        self._arriveTime = {self._start.getName(): self._departureTime}
-        self._gScore = {self._start.getName(): 0}
-        self._fScore = {self._start.getName(): self.calc_f(self._start.getName())}
+        self._howBy = {}
+        self._arrivalTime = {start_name: self._departureTime}
+        self._gScore = {start_name: 0}
+        self._fScore = {start_name: self.calcH(self._start.getName())}
 
-    def dist_between(self, start: Vertex, end: Vertex):
+    # 计算相邻两点之间的最短路径和代价
+    def distBetween(self, start: Vertex, end: Vertex):
         if start == end:
             return None, 0
         if start and end and end in start.adjacentVerticesIter():
-            way, weight = start.bestByTo(end, self._nowTime)
+            way, weight = start.bestByTo(end, self._nowTime, self._strategy)
             if way:
                 return way, weight
         return None, float('inf')
 
-    def calc_f(self, v_name):
-        return self.calc_g(v_name)[1] + self.calc_h(v_name)
-
-    def calc_g(self, v_name):
-        if v_name == self._start.getName():
-            return self.dist_between(self._start, self._map.findVertex(v_name))
-        return self.dist_between(self._cameFrom[v_name], self._map.findVertex(v_name))
-
-    def calc_h(self, v_name):
+    # 计算此节点到终点预计需要付出的代价
+    def calcH(self, v_name):
         if v_name == self._end.getName():
             return 0
         v_ll = get_from_ll_dict(v_name)
@@ -55,141 +77,149 @@ class AStar(object):
             return result * ENLIGHTENING_VALUE
         return float('inf')
 
-    def addInOpen(self, father, vertex: Vertex):
-        self._cameFrom[vertex.getName()] = father
-        self._byways[vertex.getName()], self._gScore[vertex.getName()] = self.calc_g(vertex.getName())
-        self._gScore[vertex.getName()] += self._gScore[father.getName()]
-        if self._byways[vertex.getName()]:
-            self._arriveTime[vertex.getName()] = self._byways[vertex.getName()].getArriveTime()
+    # 将一个节点和他的父节点连接、初始化代价字典并加入_open列表
+    def addInOpen(self, father: Vertex, current: Vertex):
+        self._cameFrom[current.getName()] = father
+        self._howBy[current.getName()], self._gScore[current.getName()] = self.distBetween(father, current)
+        if self._howBy[current.getName()]:
+            self._gScore[current.getName()] += self._gScore[father.getName()]
+            self._arrivalTime[current.getName()] = self._howBy[current.getName()].getArriveTime()
         else:
-            print('not', father, vertex, 'way')
-        self._fScore[vertex.getName()] = self.calc_h(vertex.getName()) + self._gScore[vertex.getName()]
-        self._open.append(vertex)
+            raise Exception(current, "'s father not", father)
+        self._fScore[current.getName()] = self.calcH(current.getName()) + self._gScore[current.getName()]
+        self._open.append(current)
 
-    def outFromOpen(self, vertex: Vertex):
+    # 将一个节点从_open列表中移出，并相应的删除字典中对应的键值对并将其加入_close列表
+    def fromOpenToClose(self, vertex: Vertex):
         if vertex in self._open:
             self._open.pop(self._open.index(vertex))
             self._fScore.pop(vertex.getName())
+            self._close.append(vertex)
             return True
-        return False
+        raise Exception('无法移除不存在的节点', vertex)
 
-    def run(self):
-        c = 0
+    # 执行A*算法搜寻最短路径
+    def runSearch(self):
         while self._open:
-            c += 1
             current_name = min(self._fScore, key=self._fScore.get)
             current = self._map.findVertex(current_name)
             if current == self._end:
-                print('总循环:', c, '次')
                 return self.reconstructPath(current)
-            self.outFromOpen(current)
-            self._close.append(current)
-            self._nowTime = self._arriveTime[current_name]
+            self.fromOpenToClose(current)
+            self._nowTime = self._arrivalTime[current_name]
             for neighbor in current.adjacentVerticesIter():
                 if neighbor in self._close:
                     continue
                 if neighbor not in self._open:
                     self.addInOpen(current, neighbor)
-
-                way, score = self.dist_between(current, neighbor)
-
-                tentative_gScore = self._gScore[current_name] + score
-                if tentative_gScore >= self._gScore[neighbor.getName()]:
                     continue
-                self._cameFrom[neighbor.getName()] = current
-                self._byways[neighbor.getName()] = way
-                self._arriveTime[neighbor.getName()] = way.getArriveTime()
-                self._gScore[neighbor.getName()] = tentative_gScore
-                self._fScore[neighbor.getName()] = self._gScore[neighbor.getName()] + self.calc_h(neighbor.getName())
+                way, gscore = self.distBetween(current, neighbor)
+                # 试探代价
+                tentative_gScore = self._gScore[current_name] + gscore
+                # 判断试探代价是否比已知代价划算
+                if tentative_gScore < self._gScore[neighbor.getName()]:
+                    self._cameFrom[neighbor.getName()] = current
+                    self._howBy[neighbor.getName()] = way
+                    self._arrivalTime[neighbor.getName()] = way.getArriveTime()
+                    self._gScore[neighbor.getName()] = tentative_gScore
+                    self._fScore[neighbor.getName()] = tentative_gScore + self.calcH(neighbor.getName())
         return False
 
+    # 根据尾节点回溯路径
     def reconstructPath(self, end_vertex):
-        total_path = [(end_vertex, None)]
-        while end_vertex.getName() in self._cameFrom.keys():
-            way = self._byways[end_vertex.getName()]
+        total_path = []
+        while end_vertex.getName() in self._cameFrom:
+            way = self._howBy[end_vertex.getName()]
             end_vertex = self._cameFrom[end_vertex.getName()]
-            total_path.append((end_vertex, way))
+            total_path.append(way)
+        total_path.reverse()
         return total_path
 
-    def getCameFrom(self):
-        return self._cameFrom
-
-    def getFScore(self):
-        return self._fScore
-
-    def getResult(self):
-        result = self.run()
-        total = []
-        ztz_logger.info('=' * 36)
+    def addLogHead(self):
+        ztz_logger.info('=' * 60)
         ztz_logger.info(
-            '=== ' + str(self._start) + '->' + str(self._end) + ' begin:' + str(self._departureTime) + ' ===')
-        ztz_logger.info('=' * 36)
-        ztz_logger.info(str(result[-1][1].getStartTime()) + ' - ' + str(result[1][1].getArriveTime()))
+            '=== ' + str(self._start) + '->' + str(self._end) + ' begin:' + str(
+                self._departureTime) + ' | ' + self._strategy + ' ===')
+        ztz_logger.info('=' * 60)
 
-        total.append(str((result[-1][1].getStartTime())))
-        total.append(str(result[1][1].getArriveTime()))
-
-        total_time = result[1][1].getArriveTime() - result[-1][1].getStartTime()
-        result.reverse()
-        for i in range(len(result)):
+    # 确定权值
+    def checkWeight(self, paths):
+        total_money = 0
+        total_time = paths[-1].getArriveTime() - paths[0].getStartTime()
+        for i in range(len(paths)):
+            total_money += paths[i].getWeight('money')
+            # 某段跨0点
+            if paths[i].getArriveTime().getDatetime().day > paths[i].getStartTime().getDatetime().day:
+                ztz_logger.info('(次日)')
+                total_time += 86400
             try:
-                if result[i][1].getArriveTime().getTime().day > result[i][1].getStartTime().getTime().day:
+                # 某两段之间因等待跨0点
+                if paths[i].getArriveTime().getDatetime().time() > paths[i + 1].getStartTime().getDatetime().time():
                     ztz_logger.info('(次日)')
-                    total[-1] += '（次日）'
                     total_time += 86400
-                if result[i][1].getArriveTime().getTime().time() > result[i + 1][1].getStartTime().getTime().time():
-                    ztz_logger.info('(次日)')
-                    total[-1] += '（次日）'
-                    total_time += 86400
-            except Exception:
+            except Exception as e:
                 continue
-        if total_time < 0:
-            total_time += 86400
-        ztz_logger.info('Use time:' + str(float('%.2f' % (total_time / 3600))) + ' h')
-        total.append(str(float('%.2f' % (total_time / 3600))) + 'h')
+        return timedelta(seconds=total_time), round(total_money, 2)
 
-        plan = []
+    # 格式化路径列表获得方案
+    def formatPath(self, paths):
+        programme = []
         index = 0
         i = 0
-        while i < len(result):
+        while i < len(paths):
             count = 1
-            try:
-                number = result[i][1].getNumber()
-                plan.append([])
-                plan[index].append(number)
-                plan[index].append(str(result[i][1].getStartTime()))
-                plan[index].append(str(result[i][1].getStart()))
-                plan[index].append('-->')
+            sum_time = 0
+            sum_money = 0
+            programme.append([])
 
-                while result[i + 1][1].getNumber() == number:
-                    i += 1
-                    count += 1
-                plan[index].append(str(result[i][1].getArrive()))
-                plan[index].append(str(result[i][1].getArriveTime()))
-                plan[index].append(str(count) + '站')
-                index += 1
+            number = paths[i].getNumber()
+            programme[index].append(number)
+            programme[index].append(str(paths[i].getStartTime()))
+            programme[index].append(str(paths[i].getStart()))
+            programme[index].append('-->')
+            sum_time += paths[i].getWeight('time')
+            sum_money += paths[i].getWeight('money')
+            while i + 1 < len(paths) and paths[i + 1].getNumber() == number:
                 i += 1
-            except Exception:
-                if i is len(result) - 2:
-                    plan[index].append(str(result[-2][1].getArrive()))
-                    plan[index].append(str(result[-2][1].getArriveTime()))
-                    plan[index].append(str(count) + '站')
-                    index += 1
-                    break
-                plan[index].append(str(count) + '站')
-                index += 1
-        for item in plan:
+                sum_time += paths[i].getWeight('time')
+                sum_money += paths[i].getWeight('money')
+                count += 1
+            programme[index].append(str(paths[i].getArrive()))
+            programme[index].append(str(paths[i].getArriveTime()))
+            programme[index].append(str(count) + '站')
+            programme[index].append(sum_money)
+            index += 1
+            i += 1
+        return programme
+
+    # 返回处理过的结果元组
+    def getResult(self):
+        paths = self.runSearch()
+
+        total_time, total_money = self.checkWeight(paths)
+        statistical = {'start_time': paths[0].getStartTime(),
+                       'arrive_time': paths[-1].getArriveTime(),
+                       'total_time': total_time, 'total_money': total_money}
+
+        programme = self.formatPath(paths)
+
+        self.addLogHead()
+        ztz_logger.info(str(paths[0].getStartTime()) + ' - ' + str(paths[-1].getArriveTime()))
+        ztz_logger.info('Use time:' + str(total_time))
+        ztz_logger.info('Use ' + self._strategy + ':￥' + str(total_money))
+        for item in programme:
             ztz_logger.info(str(item))
-        return plan, total, total_time
+
+        return programme, statistical
 
 
 if __name__ == "__main__":
-    _from = '首都国际机场'
-    _to = '两江国际机场'
-    _departureTime = '0:0'
-
-    a = AStar(TRAFFIC_MAP, _from, _to, _departureTime)
+    _from = '福州'
+    _to = '长沙'
+    _departureTime = '8:0'
     begin = time.time()
-    print(a.getResult())
+    a = AStar(TRAFFIC_MAP, _from, _to, _departureTime, 'money')
+    for edge in a.getResult():
+        print(str(edge))
     end = time.time()
-    # print('run Main time:', end - begin)
+    print('run Main time:', end - begin)

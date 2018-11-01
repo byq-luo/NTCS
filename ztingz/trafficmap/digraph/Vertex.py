@@ -42,6 +42,14 @@ class Vertex(object):
     def edgesIter(self):
         return iter(self._edgeList)
 
+    # 获得到达一个另一节点的边表
+    def toSomewhere(self, target):
+        can_take_list = []
+        for edge in self.edgesIter():
+            if edge.getArrive() == target:
+                can_take_list.append(edge)
+        return can_take_list
+
     # 获得此节点的可达节点的迭代器
     def adjacentVerticesIter(self):
         vertices = list()

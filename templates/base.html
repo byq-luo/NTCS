@@ -15,7 +15,7 @@
 <body>
 <div class="jumbotron" style="background: none; padding-bottom: 5vw">
     <div class="container">
-        <form class="row" action="/serchPath" enctype="multipart/form-data" method="post">
+        <form class="row" action="/searchPath" enctype="multipart/form-data" method="post">
             <div class="col-12"><a href="/"><h1 class="big-title">全国交通咨询模拟系统</h1></a> <br></div>
             <fieldset class="form-group text-center col-12">
                 <label for="sel_auto" class="control-label">交通工具：</label>
@@ -24,12 +24,12 @@
                     <label class="custom-control-label" for="sel_auto">自动</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" class="custom-control-input" id="sel_train" {{ train_checked }} name="vehicle"
+                    <input type="radio" class="custom-control-input" id="sel_train" {{ train }} name="vehicle"
                            value="train">
                     <label class="custom-control-label" for="sel_train">铁路</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" class="custom-control-input" id="sel_plane" {{ plane_checked }} name="vehicle"
+                    <input type="radio" class="custom-control-input" id="sel_plane" {{ plane }} name="vehicle"
                            value="plane">
                     <label class="custom-control-label" for="sel_plane">飞机</label>
                 </div>
@@ -38,7 +38,6 @@
             <fieldset class="form-group col-md-3 col-sm-12">
                 <div class="input-group">
                     <span class="input-group-prepend input-group-text" id="starting">出发地</span>
-                    {#                      <input type="text" class="form-control" placeholder="例如：上海" aria-describedby="starting" name="starting" value="上海">#}
                     <input type="text" class="form-control" placeholder="例如：上海" aria-describedby="starting"
                            name="starting" value={{ starting }}>
                 </div>
@@ -47,19 +46,16 @@
             <fieldset class="form-group col-md-3 col-sm-12">
                 <div class="input-group">
                     <span class="input-group-prepend input-group-text" id="destination">目的地</span>
-                    {#                  <input type="text" class="form-control" placeholder="例如：北京" aria-describedby="destination" name="destination" value="北京">#}
                     <input type="text" class="form-control" placeholder="例如：北京" aria-describedby="destination"
                            name="destination" value={{ destination }}>
                 </div>
                 <span class="text-danger" style="list-style: none">{{ errors.destination }}</span>
             </fieldset>
             <fieldset class="form-group col-md-3 col-sm-12">
-                {#                    <label for="date" class="control-label">出发日期</label>#}
                 <div class="input-group date form_datetime" data-date="" data-date-format="yyyy-mm-dd hh:ii:ss"
                      data-link-field="dtp_input1" data-link-format="yyyy-mm-dd hh:ii:ss">
-                    <span class="input-group-prepend input-group-text" id="date">出发日期</span>
-                    <input class="form-control" type="text" readonly placeholder="2018-10-30 21:00:00" name="datetime"
-                           value='{{ date_time }}'>
+                    <span class="input-group-prepend input-group-text" id="departure_time">出发日期</span>
+                    <input class="form-control" type="text" readonly name="departure_time" value='{{ departure_time }}'>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
@@ -67,10 +63,8 @@
             </fieldset>
             <fieldset class="form-group col-md-3 col-sm-12">
                 <select class="form-control" id="sel_strategy" name="strategy">
-                    <option value="fast">最快</option>
-                    <option value="cheapest">最省钱</option>
-                    <option value="least_change">最少换乘</option>
-                    <option value="most_comfortable">最舒适</option>
+                    <option value="time" {{ time }}>最快</option>
+                    <option value="money" {{ money }}>最省钱</option>
                 </select>
                 <span class="text-danger">{{ errors.strategy }}</span>
             </fieldset>

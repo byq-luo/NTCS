@@ -14,7 +14,7 @@ class Time(object):
     def __init__(self, strDate='2018-1-1', strTime=...):
         self._datetime = datetime.strptime(strDate + ' ' + strTime, format('%Y-%m-%d %H:%M'))
 
-    def getTime(self):
+    def getDatetime(self):
         return self._datetime
 
     def getTimeClock(self):
@@ -59,8 +59,15 @@ class Time(object):
 
 
 if __name__ == "__main__":
-    a = Time(strTime='12:30')
-    b = Time(strTime='12:40')
-    print(a)
-    a.nextDay()
-    print(a)
+    departure_time = datetime(2018, 10, 30, 8, 32)
+    b = datetime(2018, 10, 3, 8, 3)
+    print(departure_time.day > b.day)
+    print(timedelta(seconds=86200))
+    print(type(timedelta(seconds=86200)))
+    # if departure_time < b:
+    #     wait = b - departure_time
+    #     print(wait)
+    # else:
+    #     wait = b + timedelta(days=1) - departure_time
+    #     print(wait)
+    pass

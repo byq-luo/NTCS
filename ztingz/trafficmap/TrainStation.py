@@ -14,35 +14,22 @@ class TrainStation(Vertex):
     def __init__(self, name: str, **kwargs):
         super(TrainStation, self).__init__(name, **kwargs)
 
-    # 获得到达一个另一个车站的列车列表
-    def byTo(self, v2: Vertex):
-        train_list = []
-        for train in self.edgesIter():
-            if train.getArrive() == v2:
-                train_list.append(train)
-        return train_list
-
     # 获得到达一个另一个车站的最优列车
-    def bestByTo(self, v2: Vertex, departure_time: Time):
-        ways = self.byTo(v2)
-        weights = []
-        for way in ways:
-            if way.getStartTime() >= departure_time:
-                station_wait = way.getStartTime() - departure_time
-            else:
-                station_wait = way.getStartTime().nextDay() - departure_time
-            weights.append(station_wait + way.getWaitingTime() + way.getWeight('time'))
+    def bestByTo(self, target: Vertex, departure_time: Time, strategy: str):
+        ways = self.toSomewhere(target)
         if ways:
+            weights = []
+            for way in ways:
+                if strategy == 'time':
+                    if departure_time <= way.getStartTime():
+                        wait_time = way.getStartTime() - departure_time
+                    else:
+                        wait_time = way.getStartTime().nextDay() - departure_time
+                    weights.append(wait_time + way.getWeight(strategy) + way.getWaitingTime())
+                else:
+                    weights.append(way.getWeight(strategy))
             return ways[weights.index(min(weights))], min(weights)
-        else:
-            return None, None
-
-    # def canTakeList(self, departure_time: Time):
-    #     can_take_list = list()
-    #     for train in self.edgesIter():
-    #         if departure_time < train.getStartTime():
-    #             can_take_list.append(train)
-    #     return can_take_list
+        return None, None
 
 
 if __name__ == "__main__":

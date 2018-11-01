@@ -3,7 +3,7 @@ from ztingz.trafficmap.Airport import Airport
 from ztingz.trafficmap.Time import Time
 from ztingz.trafficmap.Train import Train
 from ztingz.trafficmap.TrainStation import TrainStation
-from ztingz.trafficmap.configure import RAILWAY_TABLE, AIRLINE_TABLE
+from ztingz.trafficmap.configure import RAILWAY_TABLE, AIRLINE_TABLE, calcMoney
 from ztingz.trafficmap.digraph.Digraph import Digraph
 
 
@@ -31,8 +31,10 @@ class TrafficMap(Digraph):
         startTime = Time(strTime=start_time)
         arriveTime = Time(strTime=arrive_time)
         if arriveTime < startTime:
+            # 将到达时间向后置一天
             arriveTime.setTime(arriveTime.nextDay())
-        kwargs['time'] = arriveTime - startTime
+        kwargs['time'] = round(arriveTime - startTime, 2)
+        kwargs['money'] = calcMoney(train_type, kwargs['time'])
         train = Train(train_number, train_type, v1, v2, startTime, arriveTime, waiting_time, **kwargs)
         return self.addEdge(train)
 
@@ -50,7 +52,8 @@ class TrafficMap(Digraph):
         arriveTime = Time(strTime=arrive_time)
         if arriveTime < startTime:
             arriveTime = arriveTime.nextDay()
-        kwargs['time'] = arriveTime - startTime
+        kwargs['time'] = round(arriveTime - startTime, 2)
+        kwargs['money'] = calcMoney('Plane', kwargs['time'])
         plane = Airplane(flight_number, company, mode, v1, v2, startTime, arriveTime, **kwargs)
         return self.addEdge(plane)
 
@@ -140,7 +143,7 @@ TRAFFIC_MAP.addTrains(RAILWAY_TABLE)
 TRAFFIC_MAP.addPlanes(AIRLINE_TABLE)
 
 if __name__ == "__main__":
-
+    print(TRAFFIC_MAP)
     for edge in TRAFFIC_MAP.edgesIter():
         print(edge)
     pass

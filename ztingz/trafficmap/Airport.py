@@ -51,35 +51,19 @@ class Airport(Vertex):
             return cityDict[self.getAbbreviation()]
         return None
 
-    # 获得到达一个另一个车站的列车列表
-    def byTo(self, v2: Vertex):
-        plane_list = []
-        for plane in self.edgesIter():
-            if plane.getArrive() == v2:
-                plane_list.append(plane)
-        return plane_list
-
-    # 获得到达一个另一个车站的最优列车
-    def bestByTo(self, v2: Vertex, departure_time: Time):
-        ways = self.byTo(v2)
-        weights = []
-        for way in ways:
-            if way.getStartTime() > departure_time:
-                station_wait = way.getStartTime() - departure_time
-            else:
-                station_wait = way.getStartTime().nextDay() - departure_time
-            weights.append(station_wait + way.getWeight('time'))
+    # 获得到达一个另一个车站的最优航班
+    def bestByTo(self, target: Vertex, departure_time: Time, strategy: str):
+        ways = self.toSomewhere(target)
         if ways:
+            weights = []
+            for way in ways:
+                if departure_time <= way.getStartTime():
+                    wait_time = way.getStartTime() - departure_time
+                else:
+                    wait_time = way.getStartTime().nextDay() - departure_time
+                weights.append(wait_time + way.getWeight(strategy))
             return ways[weights.index(min(weights))], min(weights)
-        else:
-            return None, None
-
-    # def canTakeList(self, departure_time: Time):
-    #     can_take_list = list()
-    #     for plane in self.edgesIter():
-    #         if departure_time < plane.getStartTime():
-    #             can_take_list.append(plane)
-    #     return can_take_list
+        return None, None
 
 
 if __name__ == "__main__":

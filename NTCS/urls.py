@@ -18,5 +18,5 @@ from front import views as front_views
 
 urlpatterns = [
     path(r"", front_views.index),
-    path(r"serchPath", front_views.updatePage),
+    path(r"searchPath", front_views.getUserInput),
 ]
