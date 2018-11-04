@@ -1,8 +1,8 @@
 import math
 import time
-from datetime import timedelta
+from datetime import timedelta, datetime
 
-from ztingz.configure import ENLIGHTENING_VALUE, ztz_logger, STRATEGY
+from ztingz.configure import ENLIGHTENING_VALUE
 from ztingz.trafficmap.Time import Time
 from ztingz.trafficmap.TrafficMap import TrafficMap, TRAFFIC_MAP
 from ztingz.trafficmap.configure import get_from_ll_dict
@@ -18,7 +18,6 @@ class AStar(object):
             始点_start
             终点_end
             出发时间_departureTime
-            当前时间_nowTime
             出行策略_strategy
 
             用来存放所有已经生成但是还是没有被扩展的节点_open
@@ -26,6 +25,7 @@ class AStar(object):
             {此节点名:父节点}字典_cameFrom
             {此节点名:父节点到此节点的边}_byways
             {此节点名:到此节点的时间}_arrivalTime
+            当前时间_nowTime
             {此节点名:到达该点的所用付出的代价}_gScore
             {此节点名:到达终点预计要付出的代价}_fScore
 
@@ -83,6 +83,8 @@ class AStar(object):
         self._howBy[current.getName()], self._gScore[current.getName()] = self.distBetween(father, current)
         if self._howBy[current.getName()]:
             self._gScore[current.getName()] += self._gScore[father.getName()]
+            if type(self._howBy[current.getName()].getArriveTime()) == datetime:
+                print()
             self._arrivalTime[current.getName()] = self._howBy[current.getName()].getArriveTime()
         else:
             raise Exception(current, "'s father not", father)
@@ -106,7 +108,7 @@ class AStar(object):
             if current == self._end:
                 return self.reconstructPath(current)
             self.fromOpenToClose(current)
-            self._nowTime = self._arrivalTime[current_name]
+            self._nowTime = self._arrivalTime.get(current_name)
             for neighbor in current.adjacentVerticesIter():
                 if neighbor in self._close:
                     continue
@@ -115,9 +117,9 @@ class AStar(object):
                     continue
                 way, gscore = self.distBetween(current, neighbor)
                 # 试探代价
-                tentative_gScore = self._gScore[current_name] + gscore
+                tentative_gScore = self._gScore.get(current_name) + gscore
                 # 判断试探代价是否比已知代价划算
-                if tentative_gScore < self._gScore[neighbor.getName()]:
+                if tentative_gScore < self._gScore.get(neighbor.getName()):
                     self._cameFrom[neighbor.getName()] = current
                     self._howBy[neighbor.getName()] = way
                     self._arrivalTime[neighbor.getName()] = way.getArriveTime()
@@ -135,13 +137,6 @@ class AStar(object):
         total_path.reverse()
         return total_path
 
-    def addLogHead(self):
-        ztz_logger.info('=' * 60)
-        ztz_logger.info(
-            '=== ' + str(self._start) + '->' + str(self._end) + ' begin:' + str(
-                self._departureTime) + ' | ' + self._strategy + ' ===')
-        ztz_logger.info('=' * 60)
-
     # 确定权值
     def checkWeight(self, paths):
         total_money = 0
@@ -150,12 +145,10 @@ class AStar(object):
             total_money += paths[i].getWeight('money')
             # 某段跨0点
             if paths[i].getArriveTime().getDatetime().day > paths[i].getStartTime().getDatetime().day:
-                ztz_logger.info('(次日)')
                 total_time += 86400
             try:
                 # 某两段之间因等待跨0点
                 if paths[i].getArriveTime().getDatetime().time() > paths[i + 1].getStartTime().getDatetime().time():
-                    ztz_logger.info('(次日)')
                     total_time += 86400
             except Exception as e:
                 continue
@@ -202,14 +195,6 @@ class AStar(object):
                        'total_time': total_time, 'total_money': total_money}
 
         programme = self.formatPath(paths)
-
-        self.addLogHead()
-        ztz_logger.info(str(paths[0].getStartTime()) + ' - ' + str(paths[-1].getArriveTime()))
-        ztz_logger.info('Use time:' + str(total_time))
-        ztz_logger.info('Use ' + self._strategy + ':￥' + str(total_money))
-        for item in programme:
-            ztz_logger.info(str(item))
-
         return programme, statistical
 
 

@@ -1,3 +1,6 @@
+from numba import jit
+
+
 class Vertex(object):
     """点类
 

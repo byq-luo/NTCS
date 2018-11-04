@@ -1,6 +1,7 @@
 from ztingz.trafficmap.digraph.AbstractCollection import AbstractCollection
 from ztingz.trafficmap.digraph.Edge import Edge
 from ztingz.trafficmap.digraph.Vertex import Vertex
+from numba import jit
 
 
 class Digraph(AbstractCollection):

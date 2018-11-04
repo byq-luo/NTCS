@@ -4,7 +4,7 @@ import os
 from ztingz.trafficmap.Time import Time
 from ztingz.trafficmap.digraph.Vertex import Vertex
 
-# 获得此文件的房问路径，防止找不到文件路径
+# 获得此文件的访问路径，防止找不到文件路径
 current_path = os.path.dirname(__file__)
 
 
@@ -57,11 +57,14 @@ class Airport(Vertex):
         if ways:
             weights = []
             for way in ways:
-                if departure_time <= way.getStartTime():
-                    wait_time = way.getStartTime() - departure_time
+                if strategy == 'time':
+                    if departure_time <= way.getStartTime():
+                        wait_time = way.getStartTime() - departure_time
+                    else:
+                        wait_time = way.getStartTime().nextDay() - departure_time
+                    weights.append(wait_time + way.getWeight(strategy))
                 else:
-                    wait_time = way.getStartTime().nextDay() - departure_time
-                weights.append(wait_time + way.getWeight(strategy))
+                    weights.append(way.getWeight(strategy))
             return ways[weights.index(min(weights))], min(weights)
         return None, None
 

@@ -51,7 +51,8 @@ class TrafficMap(Digraph):
         startTime = Time(strTime=start_time)
         arriveTime = Time(strTime=arrive_time)
         if arriveTime < startTime:
-            arriveTime = arriveTime.nextDay()
+            # 将到达时间向后置一天
+            arriveTime.setTime(arriveTime.nextDay())
         kwargs['time'] = round(arriveTime - startTime, 2)
         kwargs['money'] = calcMoney('Plane', kwargs['time'])
         plane = Airplane(flight_number, company, mode, v1, v2, startTime, arriveTime, **kwargs)
@@ -60,19 +61,19 @@ class TrafficMap(Digraph):
     # 从列车时刻表获取列车信息的方法
     def addTrains(self, timetable: list, **kwargs):
         for row in timetable:
-            if row['D_Time'] == '-':
+            if row.get('D_Time') == '-':
                 continue
-            train_number = row['ID']
-            train_type = row['Type']
-            v1_name = row['Station']
+            train_number = row.get('ID')
+            train_type = row.get('Type')
+            v1_name = row.get('Station')
             next_row = timetable[timetable.index(row) + 1]
-            v2_name = next_row['Station']
-            start_time = row['D_Time']
-            arrive_time = next_row['A_Time']
-            if next_row['D_Time'] == '-':
+            v2_name = next_row.get('Station')
+            start_time = row.get('D_Time')
+            arrive_time = next_row.get('A_Time')
+            if next_row.get('D_Time') == '-':
                 waiting_time = 0
             else:
-                arrive_wait_time = next_row['D_Time']
+                arrive_wait_time = next_row.get('D_Time')
                 if Time(strTime=arrive_wait_time) < Time(strTime=arrive_time):
                     waiting_time = Time(strTime=arrive_wait_time).nextDay() - Time(strTime=arrive_time)
                 else:
@@ -85,15 +86,15 @@ class TrafficMap(Digraph):
         for row in timetable:
             if row['Company'] == '没有航班':
                 continue
-            flight_number = row['AirlineCode']
-            company = row['Company']
-            mode = row['Mode']
-            v1_name = row['StartDrome']
-            v1_abbreviation = row['startCity']
-            v2_name = row['ArriveDrome']
-            v2_abbreviation = row['lastCity']
-            start_time = row['StartTime']
-            arrive_time = row['ArriveTime']
+            flight_number = row.get('AirlineCode')
+            company = row.get('Company')
+            mode = row.get('Mode')
+            v1_name = row.get('StartDrome')
+            v1_abbreviation = row.get('startCity')
+            v2_name = row.get('ArriveDrome')
+            v2_abbreviation = row.get('lastCity')
+            start_time = row.get('StartTime')
+            arrive_time = row.get('ArriveTime')
             self.addPlane(flight_number, company, mode,
                           v1_name, v1_abbreviation, v2_name, v2_abbreviation,
                           start_time, arrive_time, **kwargs)
@@ -144,6 +145,6 @@ TRAFFIC_MAP.addPlanes(AIRLINE_TABLE)
 
 if __name__ == "__main__":
     print(TRAFFIC_MAP)
-    for edge in TRAFFIC_MAP.edgesIter():
-        print(edge)
+    # for edge in TRAFFIC_MAP.edgesIter():
+    #     print(edge)
     pass

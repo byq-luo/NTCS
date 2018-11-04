@@ -1,7 +1,8 @@
 from abc import abstractmethod
 
 from ztingz.trafficmap.digraph.Vertex import Vertex
-from ztingz.trafficmap.digraph.configure import SEARCH_WEIGHT
+from ztingz.trafficmap.digraph.configure import COMPARE_WEIGHT
+from numba import jit
 
 
 class Edge(object):
@@ -56,7 +57,7 @@ class Edge(object):
         return False
 
     def __lt__(self, other):
-        return self.getWeight(SEARCH_WEIGHT) < other.getWeight(SEARCH_WEIGHT)
+        return self.getWeight(COMPARE_WEIGHT) < other.getWeight(COMPARE_WEIGHT)
 
 
 if __name__ == "__main__":

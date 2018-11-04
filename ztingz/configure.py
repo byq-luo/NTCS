@@ -1,6 +1,5 @@
 import logging
 
-STRATEGY = 'time'
 ENLIGHTENING_VALUE = 400
 
 # 创建一个logger

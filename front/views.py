@@ -6,9 +6,11 @@ from django import forms
 from django.views.decorators.csrf import csrf_exempt
 
 from ztingz.AStar import AStar
+from ztingz.configure import ztz_logger
 from ztingz.trafficmap.TrafficMap import TRAFFIC_MAP
 
 
+# 浏览器表单接收的数据
 class UserForm(forms.Form):
     vehicle = forms.CharField(error_messages={'required': u'交通工具不能为空'}, )
     starting = forms.CharField(error_messages={'required': u'出发地不能为空'}, )
@@ -17,12 +19,14 @@ class UserForm(forms.Form):
     strategy = forms.CharField(error_messages={'required': u'最优策略不能为空'}, )
 
 
+# 连接Astar算法，获得方案和方案统计信息
 def getAstar(start, end, departure_time, strategy):
     a = AStar(TRAFFIC_MAP, start, end, departure_time, strategy)
     programme, statistical = a.getResult()
     return programme, statistical
 
 
+# 获得某一城市的某种类型的节点
 def getStation(city_name, type):
     if type == 'train':
         station_list = TRAFFIC_MAP.getTrainStation(city_name)
@@ -33,7 +37,26 @@ def getStation(city_name, type):
     return station_list
 
 
+# 用于判断用户是否想要精确查询某个站获机场的方案
+def getStartsAndEnds(info_dict):
+    if '站' in info_dict.get('starting'):
+        starts = [info_dict.get('starting').replace('站', '')]
+    elif '机场' in info_dict.get('starting'):
+        starts = [info_dict.get('starting')]
+    else:
+        starts = getStation(info_dict.get('starting'), info_dict.get('vehicle'))
+    if '站' in info_dict.get('destination'):
+        ends = [info_dict.get('destination').replace('站', '')]
+    elif '机场' in info_dict.get('destination'):
+        ends = [info_dict.get('destination')]
+    else:
+        ends = getStation(info_dict.get('destination'), info_dict.get('vehicle'))
+    return starts, ends
+
+
+# 主处理程序，用于处理用户的请求并返回结果页面
 def index(request, info_dict=None):
+    begin_time = time.time()
     now_datetime = datetime.now()
     start_date = now_datetime.date()
     if info_dict is None:
@@ -41,9 +64,10 @@ def index(request, info_dict=None):
                       context={'starting': '福州', 'destination': '北京',
                                'departure_time': str(now_datetime).split('.')[0],
                                'start_date': str(start_date)})
+    ztz_logger.info('= ' * 75)
+    ztz_logger.info('*' + str(info_dict) + '*')
     try:
-        starts = getStation(info_dict['starting'], info_dict['vehicle'])
-        ends = getStation(info_dict['destination'], info_dict['vehicle'])
+        starts, ends = getStartsAndEnds(info_dict)
         print(starts, ends)
         result, total_head, total_info = None, None, None
         if starts and ends:
@@ -52,58 +76,70 @@ def index(request, info_dict=None):
                 for end in ends:
                     if ('机场' in start and '机场' not in end) or ('机场' not in start and '机场' in end):
                         continue
-                    programme, statistical = getAstar(start, end, str(info_dict['departure_time']).split(' ')[1][:-3],
-                                                      info_dict['strategy'])
+                    programme, statistical = getAstar(start, end,
+                                                      str(info_dict.get('departure_time')).split(' ')[1][:-3],
+                                                      info_dict.get('strategy'))
                     if now_min_weight == float('inf'):
-                        now_min_weight = statistical['total_' + info_dict['strategy']]
+                        now_min_weight = statistical.get('total_' + info_dict.get('strategy'))
                         result = programme
                         total_info = [str(head) for head in statistical.values()]
-                    if statistical['total_' + info_dict['strategy']] < now_min_weight:
-                        now_min_weight = statistical['total_' + info_dict['strategy']]
+                    if statistical.get('total_' + info_dict.get('strategy')) < now_min_weight:
+                        now_min_weight = statistical.get('total_' + info_dict.get('strategy'))
                         result = programme
                         total_info = [str(head) for head in statistical.values()]
             total_head = ['出发时间', '到达时间', '总用时', '总花费']
             if result:
+                ztz_logger.info(str(total_info))
+                for item in result:
+                    ztz_logger.info(str(item))
+                end_time = time.time()
+                ztz_logger.info('Get result use: ' + str(end_time - begin_time) + 's')
+
                 return render(request, 'index.html',
                               context={"rows": result,
                                        'total_head': total_head, 'total_info': total_info,
-                                       info_dict['vehicle']: 'checked',
-                                       'starting': info_dict['starting'], 'destination': info_dict['destination'],
-                                       info_dict['strategy']: 'selected',
-                                       'departure_time': str(info_dict['departure_time']),
+                                       info_dict.get('vehicle'): 'checked',
+                                       'starting': info_dict.get('starting'),
+                                       'destination': info_dict.get('destination'),
+                                       info_dict.get('strategy'): 'selected',
+                                       'departure_time': str(info_dict.get('departure_time')),
                                        'start_date': str(start_date)})
             else:
                 raise Exception('没有找到最短路径！')
         else:
             raise Exception('没有相关地点的信息！')
     except Exception as e:
+        ztz_logger.warning(str(e) + 'user input:' + str(info_dict))
         return render(request, 'map_error.html',
-                      context={'error_message': str(e), info_dict['vehicle']: 'checked',
-                               'starting': info_dict['starting'], 'destination': info_dict['destination'],
-                               info_dict['strategy']: 'selected', 'departure_time': str(info_dict['departure_time']),
+                      context={'error_message': str(e), info_dict.get('vehicle'): 'checked',
+                               'starting': info_dict.get('starting'), 'destination': info_dict.get('destination'),
+                               info_dict.get('strategy'): 'selected',
+                               'departure_time': str(info_dict.get('departure_time')),
                                'start_date': str(start_date)})
 
 
+# 用于处理用户的输入，判断输入是否有效
 @csrf_exempt
 def getUserInput(request):
     if request.method == "POST":
         user_input = UserForm(request.POST)
         if user_input.is_valid():
             user_input_info = user_input.clean()
-            print('user_input_info', user_input_info)
             return index(request, user_input_info)
         else:
             error_msg = user_input.errors
             # 有问题
             now_datetime = datetime.now()
             start_date = now_datetime.date()
-            print(type(user_input), user_input)
+            ztz_logger.exception(error_msg)
+            ztz_logger.info('user from:' + str(request))
             return render(request, 'input_error.html',
                           context={'errors': error_msg,
                                    'starting': '福州', 'destination': '北京',
                                    'departure_time': str(now_datetime).split('.')[0],
                                    'start_date': str(start_date)})
     else:
+        ztz_logger.warning('request.method != "POST"')
         return redirect('/')
 
 
